@@ -1,2 +1,26 @@
-%h1 Posts#index
-%p Find me in app/views/posts/index.html.haml
+.row
+  .col-lg-9
+    .row.posts-feed
+      - 30.times do
+        %article.col-lg-4.col-sm-4.col-xs-12
+          = link_to post_path(1) do
+            = image_tag 'dummy/250x211.png', class: 'img-responsive', size: '250x211'
+            %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
+  %aside.col-lg-3
+    .row.video-block
+      %h2.block-title Видео
+      .row.videos
+        - 4.times do
+          %article.col-lg-12.col-sm-6.col-xs-12
+            = link_to '#' do
+              = image_tag 'dummy/250x211.png', class: 'img-responsive', size: '250x211'
+              %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
+    .row.gallery-block
+      %h2.block-title Галереи
+      .row.galleries
+        - 4.times do
+          %article.col-lg-12.col-sm-6.col-xs-12
+            = link_to '#' do
+              = image_tag 'dummy/250x211.png', class: 'img-responsive', size: '250x211'
+              %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
+
