@@ -21,39 +21,41 @@
 
 
   %body{class: controller.controller_name}
-    %header
-      .container
-        .row
-          .col-lg-12
-            = link_to root_path do
-              %h1.logo Anime Fag
-          .col-lg-12
-            %nav.navbar.navbar-head
-              .container-fluid
-                .navbar-header
-                  %button.navbar-toggle.collapsed{'aria-expanded' => false, 'data-target' => '#navbar-collapse', 'data-toggle' => 'collapse', type: 'button'}
-                    %span.sr-only Toggle navigation
-                    %span.icon-bar
-                    %span.icon-bar
-                    %span.icon-bar
+    #wrapper.container
+      .row
+        %header
+          .container
+            .row
+              .col-lg-12
+                = link_to root_path do
+                  %h1.logo Anime Fag
+              .col-lg-12
+                %nav.navbar.navbar-head
+                  .container-fluid
+                    .navbar-header
+                      %button.navbar-toggle.collapsed{'aria-expanded' => false, 'data-target' => '#navbar-collapse', 'data-toggle' => 'collapse', type: 'button'}
+                        %span.sr-only Toggle navigation
+                        %span.icon-bar
+                        %span.icon-bar
+                        %span.icon-bar
 
-                .collapse.navbar-collapse#navbar-collapse
-                  %ul.nav.navbar-nav
-                    %li.active= link_to 'Посты', '#'
-                    %li= link_to 'Галереи', '#'
-                    %li= link_to 'Видео', '#'
+                    .collapse.navbar-collapse#navbar-collapse
+                      %ul.nav.navbar-nav
+                        %li.active= link_to 'Посты', '#'
+                        %li= link_to 'Галереи', '#'
+                        %li= link_to 'Видео', '#'
 
-    %main
-      .container
-        .row
-          .col-lg-12
-            = bootstrap_flash
-            = yield
-    %footer
-      .container
-        .row
-          .col-lg-12
-            %p &copy; Company 2015
+        %main
+          .container
+            .row
+              .col-lg-12
+                = bootstrap_flash
+                = yield
+        %footer.navbar-fixed-bottom.row-fluid
+          .container
+            .row
+              .col-lg-12
+                %p &copy; Company 2015
 
 
     = javascript_include_tag 'application'

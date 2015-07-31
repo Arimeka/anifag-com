@@ -2,3 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.home {
+  article {
+    a {
+      text-decoration: none;
+      font-family: PTSans-CaptionBold;
+
+      color: #2B2B2B;
+      margin: 0 auto;
+      text-align: center;
+
+      &:hover {
+        color: #4A6D8A;
+      }
+
+      img {
+        margin: 0 auto;
+      }
+    }
+  }
+  .biggest-post {
+    a {
+      font-size: 36px;
+      line-height: 46px;
+      text-shadow: 0px 1px 4px rgba(0,0,0,0.50);
+    }
+  }
+}
