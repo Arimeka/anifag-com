@@ -28,7 +28,7 @@
             .row
               .col-lg-12
                 = link_to root_path do
-                  %h1.logo Anime Fag
+                  .logo Anime Fag
               .col-lg-12
                 %nav.navbar.navbar-head
                   .container-fluid
@@ -55,7 +55,15 @@
           .container
             .row
               .col-lg-12
-                %p &copy; Company 2015
+                .navbar.navbar-footer
+                  .col-lg-2
+                    = link_to root_path do
+                      .logo-footer Anime Fag
+                  .col-lg-3
+                    %ul.list-unstyled
+                      %li= link_to 'Посты', '#'
+                      %li= link_to 'Галереи', '#'
+                      %li= link_to 'Видео', '#'
 
 
     = javascript_include_tag 'application'

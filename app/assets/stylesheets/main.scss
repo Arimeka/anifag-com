@@ -4,14 +4,38 @@ html, body {
 }
 
 #wrapper {
-  padding-bottom: 100px;
+  padding-bottom: 132px;
   position: relative;
 }
 
 footer {
   position: absolute;
   bottom: 0;
-  height: 100px;
+  height: 132px;
+
+  .navbar-footer {
+    padding-top: 30px;
+    border-top: 2px solid #2B2B2B;
+    border-radius: 0px;
+
+    a {
+      font-family: PTSans-CaptionBold, Helvetica, sans-serif;
+      color: #4A4A4A;
+      font-size: 18px;
+      line-height: 23px;
+    }
+  }
+
+  .logo-footer {
+    width: 155px;
+    height: 43px;
+    background: image-url('logo-footer.png') 100% 100% no-repeat;
+    background-size: contain;
+    margin: 0 auto;
+    line-height: 0;
+    font-size: 0;
+    color: transparent;
+  }
 }
 
 main {

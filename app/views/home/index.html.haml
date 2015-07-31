@@ -3,98 +3,34 @@
     .row.biggest-post.center-block
       %article.col-lg-12
         = link_to '#' do
-          = image_tag 'dummy/780x562.png', class: 'img-responsive', size: '780x562'
+          = image_tag 'dummy/780x564.png', class: 'img-responsive', size: '780x564'
           %h2.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
     .row.big-posts
-      %article.col-lg-6.col-sm-6.col-xs-12
-        = link_to '#' do
-          = image_tag 'dummy/378x247.png', class: 'img-responsive', size: '378x247'
-          %h3.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
-      %article.col-lg-6.col-sm-6.col-xs-12
-        = link_to '#' do
-          = image_tag 'dummy/378x247.png', class: 'img-responsive', size: '378x247'
-          %h3.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
-      %article.col-lg-6.col-sm-6.col-xs-12
-        = link_to '#' do
-          = image_tag 'dummy/378x247.png', class: 'img-responsive', size: '378x247'
-          %h3.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
-      %article.col-lg-6.col-sm-6.col-xs-12
-        = link_to '#' do
-          = image_tag 'dummy/378x247.png', class: 'img-responsive', size: '378x247'
-          %h3.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
+      - 4.times do
+        %article.col-lg-6.col-sm-6.col-xs-12
+          = link_to '#' do
+            = image_tag 'dummy/378x249.png', class: 'img-responsive', size: '378x249'
+            %h3.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
     .row.posts
-      %article.col-lg-4.col-sm-4.col-xs-12
-        = link_to '#' do
-          = image_tag 'dummy/250x210.png', class: 'img-responsive', size: '250x210'
-          %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
-      %article.col-lg-4.col-sm-4.col-xs-12
-        = link_to '#' do
-          = image_tag 'dummy/250x210.png', class: 'img-responsive', size: '250x210'
-          %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
-      %article.col-lg-4.col-sm-4.col-xs-12
-        = link_to '#' do
-          = image_tag 'dummy/250x210.png', class: 'img-responsive', size: '250x210'
-          %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
-      %article.col-lg-4.col-sm-4.col-xs-12
-        = link_to '#' do
-          = image_tag 'dummy/250x210.png', class: 'img-responsive', size: '250x210'
-          %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
-      %article.col-lg-4.col-sm-4.col-xs-12
-        = link_to '#' do
-          = image_tag 'dummy/250x210.png', class: 'img-responsive', size: '250x210'
-          %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
-      %article.col-lg-4.col-sm-4.col-xs-12
-        = link_to '#' do
-          = image_tag 'dummy/250x210.png', class: 'img-responsive', size: '250x210'
-          %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
-      %article.col-lg-4.col-sm-4.col-xs-12
-        = link_to '#' do
-          = image_tag 'dummy/250x210.png', class: 'img-responsive', size: '250x210'
-          %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
-      %article.col-lg-4.col-sm-4.col-xs-12
-        = link_to '#' do
-          = image_tag 'dummy/250x210.png', class: 'img-responsive', size: '250x210'
-          %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
-      %article.col-lg-4.col-sm-4.col-xs-12
-        = link_to '#' do
-          = image_tag 'dummy/250x210.png', class: 'img-responsive', size: '250x210'
-          %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
+      - 9.times do
+        %article.col-lg-4.col-sm-4.col-xs-12
+          = link_to '#' do
+            = image_tag 'dummy/250x211.png', class: 'img-responsive', size: '250x211'
+            %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
   %aside.col-lg-3
     .row.video-block
       %h2.block-title Видео
       .row.videos
-        %article.col-lg-12.col-sm-6.col-xs-12
-          = link_to '#' do
-            = image_tag 'dummy/250x210.png', class: 'img-responsive', size: '250x210'
-            %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
-        %article.col-lg-12.col-sm-6.col-xs-12
-          = link_to '#' do
-            = image_tag 'dummy/250x210.png', class: 'img-responsive', size: '250x210'
-            %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
-        %article.col-lg-12.col-sm-6.col-xs-12
-          = link_to '#' do
-            = image_tag 'dummy/250x210.png', class: 'img-responsive', size: '250x210'
-            %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
-        %article.col-lg-12.col-sm-6.col-xs-12
-          = link_to '#' do
-            = image_tag 'dummy/250x210.png', class: 'img-responsive', size: '250x210'
-            %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
+        - 4.times do
+          %article.col-lg-12.col-sm-6.col-xs-12
+            = link_to '#' do
+              = image_tag 'dummy/250x211.png', class: 'img-responsive', size: '250x211'
+              %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
     .row.gallery-block
       %h2.block-title Галереи
       .row.galleries
-        %article.col-lg-12.col-sm-6.col-xs-12
-          = link_to '#' do
-            = image_tag 'dummy/250x210.png', class: 'img-responsive', size: '250x210'
-            %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
-        %article.col-lg-12.col-sm-6.col-xs-12
-          = link_to '#' do
-            = image_tag 'dummy/250x210.png', class: 'img-responsive', size: '250x210'
-            %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
-        %article.col-lg-12.col-sm-6.col-xs-12
-          = link_to '#' do
-            = image_tag 'dummy/250x210.png', class: 'img-responsive', size: '250x210'
-            %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
-        %article.col-lg-12.col-sm-6.col-xs-12
-          = link_to '#' do
-            = image_tag 'dummy/250x210.png', class: 'img-responsive', size: '250x210'
-            %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
+        - 4.times do
+          %article.col-lg-12.col-sm-6.col-xs-12
+            = link_to '#' do
+              = image_tag 'dummy/250x211.png', class: 'img-responsive', size: '250x211'
+              %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
