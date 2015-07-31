@@ -11,6 +11,8 @@ gem 'migration_comments'
 
 # CSS
 gem 'sass-rails', '~> 5.0'
+gem 'twitter-bootstrap-rails'
+gem 'autoprefixer-rails'
 
 # JS
 # == Server-side JS execution

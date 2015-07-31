@@ -12,4 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap/collapse
+//= require twitter/bootstrap/tooltip
+//= require twitter/bootstrap/popover
 //= require_tree .
