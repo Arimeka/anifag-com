@@ -1,0 +1,52 @@
+.row
+  .col-lg-9
+    .row
+      %article.content
+        %h1.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
+        .main-image= image_tag 'dummy/780x564.png', class: 'img-responsive', size: '780x564'
+        .body
+          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+          %img{ src: 'https://lh6.googleusercontent.com/_fisBuINnZ2kX31hrjMlV_FlOy2AnmI9QvOjxtM4I7T3=w496-h800-no'}
+
+          %p
+            Lorem ipsum dolor sit amet,
+            = link_to 'consectetur', '#'
+            adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+          .embed-responsive.embed-responsive-16by9
+            %iframe{width: 800, height: 450,  src: 'https://www.youtube.com/embed/QeaFvbUi7mU?rel=0&amp;controls=0', frameborder: 0, allowfullscreen: ''}
+    .row.same-posts-block
+      .h2 Похожие записи
+      .row.posts
+        - 6.times do
+          %article.col-lg-4.col-sm-4.col-xs-12
+            = link_to post_path(1) do
+              = image_tag 'dummy/250x211.png', class: 'img-responsive', size: '250x211'
+              %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
+
+  %aside.col-lg-3
+    .row.video-block
+      %h2.block-title Видео
+      .row.videos
+        - 4.times do
+          %article.col-lg-12.col-sm-6.col-xs-12
+            = link_to '#' do
+              = image_tag 'dummy/250x211.png', class: 'img-responsive', size: '250x211'
+              %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
+    .row.gallery-block
+      %h2.block-title Галереи
+      .row.galleries
+        - 4.times do
+          %article.col-lg-12.col-sm-6.col-xs-12
+            = link_to '#' do
+              = image_tag 'dummy/250x211.png', class: 'img-responsive', size: '250x211'
+              %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
