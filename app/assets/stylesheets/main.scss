@@ -1,3 +1,19 @@
+@font-face {
+  font-family: 'PTSans-Regular';
+  src: font_path('fonts/PTS55F-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'PTSans-CaptionBold';
+    src: font_path('fonts/PTC75F-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
 html, body {
   background: #F2F2F2;
   height: 100%;
@@ -54,7 +70,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 body {
-  font-family: PTSans, Helvetica, sans-serif;
+  font-family: PTSans-Regular, Helvetica, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
   color: #333333;
