@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   resources :articles, only: [:index, :show]
   resources :galleries, only: [:index, :show]
+  resources :videos, only: [:index, :show]
 end

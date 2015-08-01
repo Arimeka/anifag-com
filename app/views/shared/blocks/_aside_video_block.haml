@@ -3,6 +3,6 @@
   .row.videos
     - 4.times do
       %article.col-lg-12.col-sm-6.col-xs-12
-        = link_to '#' do
+        = link_to video_path(1) do
           = image_tag 'dummy/250x211.png', class: 'img-responsive', size: '250x211'
           %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit

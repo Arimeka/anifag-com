@@ -13,7 +13,6 @@ gem 'migration_comments'
 gem 'sass-rails', '~> 5.0'
 gem 'twitter-bootstrap-rails'
 gem 'autoprefixer-rails'
-gem 'photoswipe-rails'
 
 # JS
 # == Server-side JS execution
@@ -26,6 +25,13 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 # JSON API builder
 gem 'jbuilder', '~> 2.0'
+
+gem 'photoswipe-rails'
+gem 'videojs_rails'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-videojs-youtube'
+end
 
 # HTML
 # == Templates
