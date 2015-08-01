@@ -55,17 +55,17 @@
                 %i.fa.fa-tachometer
                 Главная
             %li{class: active_action?('posts', 'index')}
-              = link_to '#' do
+              = link_to backend_articles_path do
                 %i.fa.fa-list-alt
-                Посты
+                = t('activerecord.models.article.title')
             %li{class: active_action?('videos', 'index')}
               = link_to '#' do
                 %i.fa.fa-youtube-play
-                Видео
+                = t('activerecord.models.video.title')
             %li{class: active_action?('galleries', 'index')}
               = link_to '#' do
                 %i.fa.fa-picture-o
-                Галереи
+                = t('activerecord.models.gallery.title')
         .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
           = yield
 

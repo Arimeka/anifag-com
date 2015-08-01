@@ -1,0 +1,2 @@
+module Backend::ArticlesHelper
+end

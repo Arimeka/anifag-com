@@ -1,0 +1,55 @@
+ru:
+  activerecord:
+    errors:
+      models:
+       complain:
+        attributes:
+
+    models:
+      video:
+        title:      Видео
+        one:        Видео
+        few:        Видео
+        many:       Видео
+        other:      Видео
+        accusative: Видео
+        labels:
+          index:    Список
+          new:      Создать
+          edit:     Редактировать
+          destroy:  Удалить
+      article:
+        title:      Публикации
+        one:        Публикация
+        few:        Публикации
+        many:       Публикаций
+        other:      Публикации
+        accusative: Публикацию
+        labels:
+          index:    Список
+          new:      Создать
+          edit:     Редактировать
+          destroy:  Удалить
+      gallery:
+        title:      Галереи
+        one:        Галерея
+        few:        Галерии
+        many:       Галерей
+        other:      Галерии
+        accusative: Галерею
+        labels:
+          index:    Список
+          new:      Создать
+          edit:     Редактировать
+          destroy:  Удалить
+      admin:
+        labels:
+          logout: Выйти
+
+    attributes:
+      defaults: &defaults
+        content:          Содержимое
+        title:            Заголовок
+        published_at:     Дата публикации
+      article:
+        <<: *defaults

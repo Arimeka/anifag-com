@@ -7,5 +7,7 @@ Rails.application.routes.draw do
 
   namespace :backend do
     root 'dashboard#index'
+
+    resources :articles, except: :show
   end
 end

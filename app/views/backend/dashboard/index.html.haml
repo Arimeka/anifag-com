@@ -2,14 +2,14 @@
 %h2.sub-header Создать
 .row.placeholders.fast-create
   .col-xs-4.col-sm-4
-    = link_to '#' do
+    = link_to new_backend_article_path do
       %i.fa.fa-pencil
-      %h4 Пост
+      %h4= t('activerecord.models.article.accusative')
   .col-xs-4.col-sm-4
     = link_to '#' do
       %i.fa.fa-youtube-play
-      %h4 Видео
+      %h4= t('activerecord.models.video.accusative')
   .col-xs-4.col-sm-4
     = link_to '#' do
       %i.fa.fa-picture-o
-      %h4 Галерею
+      %h4= t('activerecord.models.gallery.accusative')
