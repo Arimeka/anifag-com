@@ -1,0 +1,14 @@
+// Place all the styles related to the Backend::Dashboard controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.dashboard {
+  .fast-create {
+    a {
+      text-decoration: none;
+      i {
+        font-size: 80px;
+      }
+    }
+  }
+}
