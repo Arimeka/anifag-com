@@ -40,7 +40,7 @@
 
                     .collapse.navbar-collapse#navbar-collapse
                       %ul.nav.navbar-nav
-                        %li{class: active_action?('posts', 'index')}= link_to 'Посты', posts_path
+                        %li{class: active_action?('posts', 'index')}= link_to 'Посты', articles_path
                         %li{class: active_action?('galleries', 'index')}= link_to 'Галереи', '#'
                         %li{class: active_action?('videos', 'index')}= link_to 'Видео', '#'
 
@@ -60,7 +60,7 @@
                       .logo-footer Anime Fag
                   .col-lg-3.col-sm-3.col-xs-4
                     %ul.list-unstyled
-                      %li= link_to 'Посты', posts_path
+                      %li= link_to 'Посты', articles_path
                       %li= link_to 'Галереи', '#'
                       %li= link_to 'Видео', '#'
 
