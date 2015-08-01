@@ -18,19 +18,5 @@
             = image_tag 'dummy/250x211.png', class: 'img-responsive', size: '250x211'
             %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
   %aside.col-lg-3
-    .row.video-block
-      %h2.block-title Видео
-      .row.videos
-        - 4.times do
-          %article.col-lg-12.col-sm-6.col-xs-12
-            = link_to '#' do
-              = image_tag 'dummy/250x211.png', class: 'img-responsive', size: '250x211'
-              %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
-    .row.gallery-block
-      %h2.block-title Галереи
-      .row.galleries
-        - 4.times do
-          %article.col-lg-12.col-sm-6.col-xs-12
-            = link_to '#' do
-              = image_tag 'dummy/250x211.png', class: 'img-responsive', size: '250x211'
-              %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
+    = render 'shared/blocks/aside_video_block'
+    = render 'shared/blocks/aside_gallery_block'

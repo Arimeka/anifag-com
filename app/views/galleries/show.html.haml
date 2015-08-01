@@ -1,11 +1,42 @@
 - content_for :title, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit - Anime Fag'
-
+.row
+  .col-lg-9
+    .row
+      .content
+        %h1.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
+.row
+  .col-lg-12
+    .row
+      .cbp-fwslider#cbp-fwslider
+        %ul
+          %li{data: {src: 'https://lh6.googleusercontent.com/_fisBuINnZ2kX31hrjMlV_FlOy2AnmI9QvOjxtM4I7T3=w496-h800-no', width: 496, height: 800 }}
+            = link_to '#' do
+              = image_tag 'https://lh6.googleusercontent.com/_fisBuINnZ2kX31hrjMlV_FlOy2AnmI9QvOjxtM4I7T3=h600'
+          %li{data: {src: 'https://lh3.googleusercontent.com/pDXn_hIgEkfXJqTn4lE_uZp85xdokqgnSwFLmihTlbOe=w1525-h1033-no', width: 1525, height: 1033 }}
+            = link_to '#' do
+              = image_tag 'https://lh3.googleusercontent.com/pDXn_hIgEkfXJqTn4lE_uZp85xdokqgnSwFLmihTlbOe=h600'
+          %li{data: {src: 'https://lh6.googleusercontent.com/duWVYx2Shoq83p9gj1mWDsIcIMX_UDLENcR2NMKSpQXE=w1347-h900-no', width: 1347, height: 900 }}
+            = link_to '#' do
+              = image_tag 'https://lh3.googleusercontent.com/duWVYx2Shoq83p9gj1mWDsIcIMX_UDLENcR2NMKSpQXE=h600'
+          %li{data: {src: 'https://lh6.googleusercontent.com/kgUDUyyAH3u68WA3hFDbyv36xiUvh6QB2qZ5CedxPV9J=w731-h1033-no', width: 731, height: 1033 }}
+            = link_to '#' do
+              = image_tag 'https://lh3.googleusercontent.com/kgUDUyyAH3u68WA3hFDbyv36xiUvh6QB2qZ5CedxPV9J=h600'
+          %li{data: {src: 'https://lh6.googleusercontent.com/aLF4Wi6mow56f8QQAqUXx6I012ye5uK0N6AlpEA-EAJF=s1000-no', width: 1000, height: 1000 }}
+            = link_to '#' do
+              = image_tag 'https://lh3.googleusercontent.com/aLF4Wi6mow56f8QQAqUXx6I012ye5uK0N6AlpEA-EAJF=h600'
+          %li{data: {src: 'https://lh6.googleusercontent.com/J1wD50e-QNYZxKO4xS0BorjnIGzcb4e4fuqvjwky98Wi=w720-h1000-no', width: 720, height: 1000 }}
+            = link_to '#' do
+              = image_tag 'https://lh3.googleusercontent.com/J1wD50e-QNYZxKO4xS0BorjnIGzcb4e4fuqvjwky98Wi=h600'
+          %li{data: {src: 'https://lh6.googleusercontent.com/FY3Cg_Ek8hkPAT_EuiuOn6WraCxBZ4yW3uxnTDR65dWm=w767-h1033-no', width: 767, height: 1033 }}
+            = link_to '#' do
+              = image_tag 'https://lh3.googleusercontent.com/FY3Cg_Ek8hkPAT_EuiuOn6WraCxBZ4yW3uxnTDR65dWm=h600'
+          %li{data: {src: 'https://lh6.googleusercontent.com/eNtQxOQYbrE6vsZv7zv-I5ElTuELD-iKS-AS8KXy5G8w=w1600-h900-no', width: 1600, height: 900 }}
+            = link_to '#' do
+              = image_tag 'https://lh3.googleusercontent.com/eNtQxOQYbrE6vsZv7zv-I5ElTuELD-iKS-AS8KXy5G8w=h600'
 .row
   .col-lg-9
     .row
       %article.content
-        %h1.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
-        .main-image= image_tag 'dummy/780x564.png', class: 'img-responsive', size: '780x564'
         .body
           %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
@@ -31,10 +62,12 @@
       .row.posts
         - 6.times do
           %article.col-lg-4.col-sm-4.col-xs-12
-            = link_to article_path(1) do
+            = link_to gallery_path(1) do
               = image_tag 'dummy/250x211.png', class: 'img-responsive', size: '250x211'
               %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
 
   %aside.col-lg-3
-    = render 'shared/blocks/aside_video_block'
+    = render 'shared/blocks/aside_post_block'
     = render 'shared/blocks/aside_gallery_block'
+
+= render 'photoswipe'
