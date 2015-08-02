@@ -1,0 +1,30 @@
+= form_tag '/backend/articles', class: 'form-horizontal' do
+  .row
+    .col-sm-6
+      .form-group
+        = label_tag 'title', t('activerecord.attributes.article.title'), class: 'col-sm-4 control-label'
+        .col-sm-8= text_field_tag 'title', nil, class: 'form-control'
+      .form-group
+        = label_tag 'published_at', t('activerecord.attributes.article.published_at'), class: 'col-sm-4 control-label'
+        .col-sm-5= text_field_tag 'published_at', nil, class: 'form-control', id: 'datetimepicker'
+    .col-sm-6
+      .checkbox
+        = label_tag 'is_published' do
+          = check_box_tag 'is_published'
+          = t('activerecord.attributes.article.is_published')
+  .row
+    .col-sm-12
+      .form-group
+        = label_tag 'description', t('activerecord.attributes.article.description'), class: 'col-sm-2 control-label'
+        .col-sm-8= text_area_tag 'description', nil, rows: 10, cols: 25, class: 'form-control'
+      .form-group
+        = label_tag 'content', t('activerecord.attributes.article.content'), class: 'col-sm-2 control-label'
+        .col-sm-8= text_area_tag 'content', nil, rows: 10, cols: 25, class: 'form-control tinymce'
+  .row
+    .col-sm-12
+      .well
+        = submit_tag t('form.save'), data: { disable_with: t('form.wait') }, class: 'btn btn-success'
+        = submit_tag t('form.save_and_exit'), data: { disable_with: t('form.wait') }, class: 'btn btn-primary'
+        = link_to t('form.cancel'), backend_articles_path, class: 'btn btn-warning'
+        = link_to t('form.delete'), backend_article_path(1), method: :delete, data: { confirm: t('form.sure?') }, class: 'btn btn-danger'
+= tinymce

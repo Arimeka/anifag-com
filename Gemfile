@@ -12,7 +12,9 @@ gem 'migration_comments'
 # CSS
 gem 'sass-rails', '~> 5.0'
 gem 'twitter-bootstrap-rails'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 gem 'autoprefixer-rails'
+gem 'tinymce-rails'
 
 # JS
 # == Server-side JS execution
@@ -31,6 +33,7 @@ gem 'videojs_rails'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-videojs-youtube'
+  gem 'rails-assets-moment'
 end
 
 # HTML

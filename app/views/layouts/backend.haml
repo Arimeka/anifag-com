@@ -19,12 +19,13 @@
     = favicon_link_tag 'favicon.ico', rel: 'shortcut icon'
 
     = javascript_include_tag 'modernizr-2.8.3.min'
+    = tinymce_assets
   %body{class: controller_name}
     = bootstrap_flash
     %nav.navbar.navbar-inverse.navbar-fixed-top
       .container-fluid
         .navbar-header
-          %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
+          %button.navbar-toggle.collapsed{'aria-controls' => 'navbar', 'aria-expanded' => false, 'data-target' => '#navbar', 'data-toggle' => 'collapse', type: 'button'}
             %span.sr-only Toggle navigation
             %span.icon-bar
             %span.icon-bar
@@ -43,7 +44,7 @@
             %li
               = link_to '#' do
                 %i.fa.fa-sign-out
-                Logout
+                = t('activerecord.models.admin.labels.logout')
           %form.navbar-form.navbar-right
             %input.form-control{:placeholder => "Search...", :type => "text"}/
     .container-fluid
@@ -54,7 +55,7 @@
               = link_to backend_root_path do
                 %i.fa.fa-tachometer
                 Главная
-            %li{class: active_action?('posts', 'index')}
+            %li{class: active_action?('articles', 'index')}
               = link_to backend_articles_path do
                 %i.fa.fa-list-alt
                 = t('activerecord.models.article.title')

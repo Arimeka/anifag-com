@@ -17,4 +17,6 @@
 //= require twitter/bootstrap/popover
 //= require video.js.js
 //= require videojs-youtube
-//= require_tree .
+//= require galleries
+//= require bootstrap
+//= require_self

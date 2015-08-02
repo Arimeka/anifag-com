@@ -51,5 +51,7 @@ ru:
         content:          Содержимое
         title:            Заголовок
         published_at:     Дата публикации
+        description:      Описание
+        is_published:     Опубликовано
       article:
         <<: *defaults

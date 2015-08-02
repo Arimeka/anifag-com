@@ -13,4 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require_tree .
+//= require moment
+//= require bootstrap-datetimepicker
+//= require moment/locale/ru
+//= require bootstrap
+//= require backend/shared/timepicker
+//= require_self

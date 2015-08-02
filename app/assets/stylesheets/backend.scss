@@ -10,8 +10,6 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require photoswipe
- *= require video-js
  *= require_self
  */
 
@@ -106,6 +104,7 @@ textarea {
    ========================================================================== */
 
 @import "bootstrap_and_overrides";
+@import 'bootstrap-datetimepicker';
 @import "backend/main";
 @import "backend/dashboard";
 

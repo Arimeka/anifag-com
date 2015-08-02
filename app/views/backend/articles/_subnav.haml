@@ -1,0 +1,18 @@
+.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle.collapsed{'aria-controls' => 'navbar', 'aria-expanded' => false, 'data-target' => '#subnavbar', 'data-toggle' => 'collapse', type: 'button'}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+    #subnavbar.navbar-collapse.collapse
+      %ul.nav.navbar-nav
+        %li{class: active_action?('articles', 'index')}
+          = link_to backend_articles_path do
+            %i.fa.fa-list
+            = t('activerecord.models.article.labels.index')
+        %li{class: active_action?('articles', 'new')}
+          = link_to new_backend_article_path do
+            %i.fa.fa-pencil
+            = t('activerecord.models.article.labels.new')

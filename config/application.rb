@@ -13,6 +13,7 @@ module AnifagCom
     config.filter_parameters += [:password]
 
     config.assets.initialize_on_precompile = false
+    config.tinymce.install = :compile
 
     config.i18n.available_locales = [:ru]
     config.i18n.enforce_available_locales = false
