@@ -12,6 +12,9 @@ gem 'migration_comments'
 # Pagination
 gem 'kaminari'
 
+# Taggins
+gem 'acts-as-taggable-on', '~> 3.4'
+
 # CSS
 gem 'sass-rails', '~> 5.0'
 gem 'twitter-bootstrap-rails'

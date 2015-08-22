@@ -61,6 +61,7 @@ class Backend::ArticlesController < BackendController
                                     :seo_slug,
                                     :seo_keywords,
                                     :seo_description,
-                                    :published_at)
+                                    :published_at,
+                                    :tag_list)
   end
 end

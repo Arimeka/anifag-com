@@ -20,7 +20,7 @@
 
       $tag_tokenizer.tokenfield(
         showAutocompleteOnFocus: true
-        typeahead: {source: tags.ttAdapter(), displayKey: 'name'},
+        typeahead: {source: tags.ttAdapter(), displayKey: 'value'},
         onlyLowerCase: true
       )
 # === ///Tagging

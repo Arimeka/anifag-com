@@ -61,5 +61,6 @@ ru:
         seo_slug:         Канонический урл
         seo_keywords:     Ключевые слова
         seo_description:  SEO-описание
+        source:           Источник
       article:
         <<: *defaults

@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     root 'dashboard#index'
 
     resources :articles, except: :show
+
+    get '/tags/:taggable', to: 'tags#search', format: :json
   end
 end

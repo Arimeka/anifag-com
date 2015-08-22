@@ -12,11 +12,16 @@
         = form.check_box :is_published
         = t('activerecord.attributes.article.is_published')
 .row
+  .col-sm-8
+    .form-group
+      = form.label :source, class: 'col-sm-3 control-label'
+      .col-sm-8= form.text_field :source, class: 'form-control'
+.row
   .col-sm-12
     .form-group
       = form.label :tag_list, class: 'col-sm-2 control-label'
       .col-sm-8
-        =# form.text_field :tag_list, class: 'form-control tags-tokenizer', data: {taggable: 'articles'}
+        = text_field_tag 'article[tag_list]', form.object.tag_list.to_s, class: 'form-control tags-tokenizer', data: {taggable: 'articles'}
         %span.help-block= t('label.form.adding_by_enter_or_comma')
     .form-group
       = form.label :content, class: 'col-sm-2 control-label'

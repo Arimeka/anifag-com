@@ -105,7 +105,8 @@ textarea {
 
 @import "bootstrap_and_overrides";
 @import 'bootstrap-datetimepicker';
-@import "bootstrap-tokenfield";
+@import 'bootstrap-tokenfield/tokenfield-typeahead';
+@import 'bootstrap-tokenfield/bootstrap-tokenfield';
 @import "backend/main";
 @import "backend/dashboard";
 

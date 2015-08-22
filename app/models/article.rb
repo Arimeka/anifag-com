@@ -19,6 +19,8 @@
 #
 
 class Article < ActiveRecord::Base
+  acts_as_taggable
+
   # Validations
   # ==================================================================================
   validates :title, :content, :published_at, presence: true
@@ -45,6 +47,12 @@ class Article < ActiveRecord::Base
   # ==================================================================================
   # Scopes
 
+  # Callbacks
+  # ==================================================================================
+  before_save :set_seo_keywords, if: 'seo_keywords.blank?'
+  # ==================================================================================
+  # Callbacks
+
   # Class methods
   # ==================================================================================
   class << self
@@ -66,4 +74,14 @@ class Article < ActiveRecord::Base
   end
   # ==================================================================================
   # Instance methods
+
+  # Private methods
+  # ==================================================================================
+  private
+
+  def set_seo_keywords
+    seo_keywords = self.tag_list
+  end
+  # ==================================================================================
+  # Private methods
 end
