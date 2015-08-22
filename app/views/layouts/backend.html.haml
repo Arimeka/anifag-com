@@ -21,7 +21,6 @@
     = javascript_include_tag 'modernizr-2.8.3.min'
     = tinymce_assets
   %body{class: controller_name}
-    = bootstrap_flash
     %nav.navbar.navbar-inverse.navbar-fixed-top
       .container-fluid
         .navbar-header
@@ -68,6 +67,7 @@
                 %i.fa.fa-picture-o
                 = t('activerecord.models.gallery.title')
         .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+          = bootstrap_flash
           = yield
 
     = javascript_include_tag 'backend'

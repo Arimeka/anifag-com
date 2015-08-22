@@ -9,6 +9,9 @@ gem 'rails', '4.2.1'
 gem 'pg'
 gem 'migration_comments'
 
+# Pagination
+gem 'kaminari'
+
 # CSS
 gem 'sass-rails', '~> 5.0'
 gem 'twitter-bootstrap-rails'

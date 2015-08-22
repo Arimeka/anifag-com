@@ -1,4 +1,4 @@
-= form_tag '/backend/articles', class: 'form-horizontal' do
+= form_for [:backend, @article], html: {class: 'form-horizontal'} do |form|
   %fieldset
     %ul.nav.nav-tabs.tabs
       %li.active
@@ -8,14 +8,15 @@
       %li
         %a{href:'#tab3', 'data-toggle' => 'tab'}= t('label.form.seo')
     .tab-content
-      #tab1.tab-pane.active= render 'tab1'
-      #tab2.tab-pane= render 'tab2'
-      #tab3.tab-pane= render 'tab3'
+      #tab1.tab-pane.active= render 'tab1', form: form
+      #tab2.tab-pane= render 'tab2', form: form
+      #tab3.tab-pane= render 'tab3', form: form
     .row
       .col-sm-12
         .well
-          = submit_tag t('form.save'), data: { disable_with: t('form.wait') }, class: 'btn btn-success'
-          = submit_tag t('form.save_and_exit'), data: { disable_with: t('form.wait') }, class: 'btn btn-primary'
+          = form.submit t('form.save'), data: { disable_with: t('form.wait') }, class: 'btn btn-success'
+          = form.submit t('form.save_and_exit'), data: { disable_with: t('form.wait') }, class: 'btn btn-primary'
           = link_to t('form.cancel'), backend_articles_path, class: 'btn btn-warning'
-          = link_to t('form.delete'), backend_article_path(1), method: :delete, data: { confirm: t('form.sure?') }, class: 'btn btn-danger pull-right'
+          - unless @article.new_record?
+            = link_to t('form.delete'), backend_article_path(@article), method: :delete, data: { confirm: t('form.sure?') }, class: 'btn btn-danger pull-right'
 = tinymce

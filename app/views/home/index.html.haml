@@ -1,22 +1,14 @@
 .row
   .col-lg-9
     .row.biggest-post.center-block
-      %article.col-lg-12
-        = link_to article_path(1) do
-          = image_tag 'dummy/780x564.png', class: 'img-responsive', size: '780x564'
-          %h2.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
+      = render partial: 'articles/article_main_big', object: @article_main_big, as: :article
     .row.big-posts
-      - 4.times do
-        %article.col-lg-6.col-sm-6.col-xs-12
-          = link_to article_path(1) do
-            = image_tag 'dummy/378x249.png', class: 'img-responsive', size: '378x249'
-            %h3.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
+      = render partial: 'articles/article_top', collection: @articles_top, as: :article
     .row.posts-feed
-      - 9.times do
-        %article.col-lg-4.col-sm-4.col-xs-12
-          = link_to article_path(1) do
-            = image_tag 'dummy/250x211.png', class: 'img-responsive', size: '250x211'
-            %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
+      = render partial: 'articles/article_small', collection: @articles_other, as: :article
+    .row
+      .col-sm-6.col-sm-offset-3
+        = link_to t('label.articles.all'), articles_path, class: 'btn btn-primary btn-lg btn-block'
   %aside.col-lg-3
     = render 'shared/blocks/aside_video_block'
     = render 'shared/blocks/aside_gallery_block'

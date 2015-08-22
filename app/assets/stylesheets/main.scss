@@ -140,6 +140,41 @@ body {
       }
     }
   }
+
+  .pagination {
+    text-align: center;
+    margin: 30px 0;
+    a,
+    span {
+      line-height: 21px;
+      border: 1px #acacac solid;
+      display: inline-block;
+      margin: 0 5px;
+      text-align: center;
+      border-radius: 3px;
+      color: #5a5a5a;
+      font-size: 14px;
+      padding: 5px 30px;
+      text-decoration: none;
+    }
+    a {
+      &:hover {
+        background: #f1f1f1;
+      }
+      &:active, &.active {
+        background: darken(#f1f1f1, 20%);
+      }
+      &[disabled] {
+        opacity: .4;
+        &:hover {
+          background: #fff;
+        }
+      }
+    }
+    span {
+      opacity: .4;
+    }
+  }
 }
 
 .home, aside, .same-posts-block, .posts-feed, .galleries-feed, .videos-feed {
@@ -151,6 +186,11 @@ body {
       margin: 0 auto;
       text-align: center;
       text-shadow: 0px 1px 4px rgba(0,0,0,0.50);
+
+      .title {
+        height: 96px;
+        overflow-y: hidden;
+      }
 
       &:hover {
         color: #4A6D8A;

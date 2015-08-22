@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  resources :articles, only: [:index, :show]
+  resources :articles, only: [:index, :show] do
+    collection { get 'page/:page', to: 'articles#index_page' }
+  end
   resources :galleries, only: [:index, :show]
   resources :videos, only: [:index, :show]
 

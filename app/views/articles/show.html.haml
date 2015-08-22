@@ -1,28 +1,14 @@
-- content_for :title, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit - Anime Fag'
-
+- content_for :title, "#{@article.title} - Anime Fag"
+- content_for :description, @article.seo_description
+- content_for :keywords, @article.seo_keywords
 .row
   .col-lg-9
     .row
       %article.content
-        %h1.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
+        %h1.title= @article.title
         .main-image= image_tag 'dummy/780x564.png', class: 'img-responsive', size: '780x564'
         .body
-          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-          %img{ src: 'https://lh6.googleusercontent.com/_fisBuINnZ2kX31hrjMlV_FlOy2AnmI9QvOjxtM4I7T3=w496-h800-no'}
-
-          %p
-            Lorem ipsum dolor sit amet,
-            = link_to 'consectetur', '#'
-            adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          = @article.content.html_safe
 
           .embed-responsive.embed-responsive-16by9
             %iframe{width: 800, height: 450,  src: 'https://www.youtube.com/embed/QeaFvbUi7mU?rel=0&amp;controls=0', frameborder: 0, allowfullscreen: ''}

@@ -2,8 +2,11 @@ ru:
   activerecord:
     errors:
       models:
-       complain:
-        attributes:
+        article:
+          blank: не может быть пустым
+          attributes:
+            published_at:
+              blank: должна быть выставлена
 
     models:
       video:

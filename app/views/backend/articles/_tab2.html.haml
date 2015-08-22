@@ -1,5 +1,5 @@
 .row
   .col-sm-12
     .form-group
-      = label_tag 'main_image', t('activerecord.attributes.article.main_image'), class: 'col-sm-2 control-label'
+      = form.label :main_image, class: 'col-sm-2 control-label'
       .col-sm-4= file_field_tag 'main_image', class: 'form-control'

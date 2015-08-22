@@ -11,14 +11,5 @@
         %th= t('activerecord.attributes.article.title')
         %th= t('activerecord.attributes.article.published_at')
         %th
-    %tbody
-      - 30.times do |i|
-        %tr
-          %td= i
-          %td Lorem
-          %td ipsum
-          %td
-            = link_to edit_backend_article_path(i), class: 'btn btn-primary' do
-              %i.fa.fa-pencil
-            = link_to backend_article_path(i), method: :delete, data: { confirm: t('form.sure?') }, class: 'btn btn-danger' do
-              %i.fa.fa-trash-o
+    %tbody= render @articles
+= paginate @articles
