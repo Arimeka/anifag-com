@@ -1,6 +1,8 @@
 namespace :sql do
   desc 'Конвертирование старой базы в новую'
   task convert: :environment do
+    include ActionView::Helpers::SanitizeHelper
+
     create_extension = 'CREATE EXTENSION IF NOT EXISTS dblink;'
     ActiveRecord::Base.connection.execute(create_extension);
 
@@ -30,8 +32,8 @@ namespace :sql do
                             TRUE                          AS is_published,
                             FALSE                         AS is_video,
                             FALSE                         AS is_gallery,
-                            concat(source, '')            AS source ,
-                            concat(id, '-', permalink)    AS seo_slug,
+                            concat(source, '')            AS source,
+                            permalink                     AS seo_slug,
                             ''                            AS seo_keywords,
                             ''                            AS seo_description,
                             created_at                    AS published_at,
@@ -52,5 +54,16 @@ namespace :sql do
 
     restore_sequence = "SELECT setval('articles_id_seq', (SELECT MAX(id) FROM articles));"
     ActiveRecord::Base.connection.execute(restore_sequence);
+
+    Article.find_each do |article|
+      description = if article.title =~ /Weekly Vocaloid Ranking/
+                      date = article.title[/Weekly Vocaloid Ranking \((.+)\)/, 1]
+                      "Рейтинг вокалоидов за период #{date}"
+                    else
+                      sanitize(article.content, tags: []).gsub("\r", '').gsub("\n", '').truncate_words(1, separator: '.', omission: '.')
+                    end
+      article.seo_description = description
+      article.save
+    end
   end
 end
