@@ -6,6 +6,15 @@
     .form-group
       = form.label :published_at, class: 'col-sm-4 control-label'
       .col-sm-5= form.text_field :published_at, class: 'form-control', id: 'datetimepicker'
+    .form-group
+      = form.label :category_id, class: 'col-sm-4 control-label'
+      .col-sm-5
+        = hidden_field_tag 'article[category_id]', nil
+        = form.select :category_id, @categories, {include_blank: t('label.form.choose_category')}, class: 'form-control'
+    .form-group
+      = form.label :category_ids, class: 'col-sm-4 control-label'
+      .col-sm-5
+        = form.select :category_ids, @categories, {}, include_blank: t('label.form.choose_category'), multiple: true, class: 'form-control'
   .col-sm-6
     .checkbox
       = form.label :is_published do

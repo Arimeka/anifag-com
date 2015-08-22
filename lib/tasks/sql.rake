@@ -58,9 +58,9 @@ namespace :sql do
     ActiveRecord::Base.connection.execute('TRUNCATE TABLE tags;')
     convert_tag = <<-SQL
                     INSERT INTO tags
-                    SELECT * FROM
+                    SELECT id, name FROM
                       dblink('dbname=anifag_old',
-                                    'SELECT * FROM tags')
+                                    'SELECT id, name FROM tags')
                     AS tags_old(id integer,
                                 name varchar(255));
                   SQL
@@ -72,9 +72,10 @@ namespace :sql do
     ActiveRecord::Base.connection.execute('TRUNCATE TABLE taggings;')
     convert_taggings = <<-SQL
                           INSERT INTO taggings
-                          SELECT * FROM
-                            dblink('dbname=anifag_old',
-                                          'SELECT * FROM taggings')
+                          SELECT
+                            id, tag_id, taggable_id, taggable_type, tagger_id, tagger_type, context, created_at
+                          FROM dblink('dbname=anifag_old',
+                                          'SELECT id, tag_id, taggable_id, taggable_type, tagger_id, tagger_type, context, created_at FROM taggings')
                           AS taggings_old(id integer,
                                           tag_id integer,
                                           taggable_id integer,
@@ -89,6 +90,53 @@ namespace :sql do
     restore_sequence = "SELECT setval('taggings_id_seq', (SELECT MAX(id) FROM taggings));"
     ActiveRecord::Base.connection.execute(restore_sequence)
 
+    ActiveRecord::Base.connection.execute('TRUNCATE TABLE categories;')
+    convert_categories = <<-SQL
+                            INSERT INTO categories
+                            SELECT
+                              id          AS id,
+                              title       AS name,
+                              created_at  AS created_at,
+                              updated_at  AS updated_at
+                            FROM
+                              dblink('dbname=anifag_old',
+                                            'SELECT id, title, created_at, updated_at FROM categories')
+                            AS categories_old(id integer,
+                                              title varchar(255),
+                                              created_at timestamp without time zone,
+                                              updated_at timestamp without time zone);
+                          SQL
+    ActiveRecord::Base.connection.execute(convert_categories)
+
+    restore_sequence = "SELECT setval('categories_id_seq', (SELECT MAX(id) FROM categories));"
+    ActiveRecord::Base.connection.execute(restore_sequence)
+
+    ActiveRecord::Base.connection.execute('TRUNCATE TABLE category_articles;')
+    convert_category_articles = <<-SQL
+                                  INSERT INTO category_articles (
+                                    id, article_id, category_id, created_at, updated_at
+                                  )
+                                  SELECT id, article_id, category_id, created_at, updated_at
+                                  FROM dblink('dbname=anifag_old',
+                                                  'SELECT id, article_id, category_id, created_at, updated_at FROM cat_associations')
+                                  AS category_articles_old(id integer,
+                                                          article_id integer,
+                                                          category_id integer,
+                                                          created_at timestamp without time zone,
+                                                          updated_at timestamp without time zone);
+                                SQL
+    ActiveRecord::Base.connection.execute(convert_category_articles)
+
+    restore_sequence = "SELECT setval('category_articles_id_seq', (SELECT MAX(id) FROM category_articles));"
+    ActiveRecord::Base.connection.execute(restore_sequence)
+
+    Category.find_by(name: 'новости').destroy
+
+    Category.find_each do |category|
+      category.name = category.name.mb_chars.capitalize.to_s
+      category.save
+    end
+
     Article.find_each do |article|
       description = if article.title =~ /Weekly Vocaloid Ranking/
                       date = article.title[/Weekly Vocaloid Ranking \((.+)\)/, 1]
@@ -98,6 +146,7 @@ namespace :sql do
                     end
       article.seo_description = description
       article.seo_keywords = article.tag_list if article.seo_keywords.blank?
+      article.category = article.categories.first
       article.save
     end
   end

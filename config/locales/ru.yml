@@ -28,6 +28,7 @@ ru:
       media:                    Медиа
       seo:                      SEO
       adding_by_enter_or_comma: Добавление по Enter или ,
+      choose_category:          Выберите категорию
 
     articles:
       all: Смотреть все

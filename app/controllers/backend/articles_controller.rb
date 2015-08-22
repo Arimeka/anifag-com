@@ -5,6 +5,7 @@ class Backend::ArticlesController < BackendController
 
   def new
     @article = Article.new
+    prepare_post
   end
 
   def create
@@ -18,6 +19,7 @@ class Backend::ArticlesController < BackendController
       end
     else
       @errors = @article.errors.full_messages
+      prepare_post
       flash.now[:error] = @errors
       render :new
     end
@@ -25,6 +27,7 @@ class Backend::ArticlesController < BackendController
 
   def edit
     @article = Article.find(params[:id])
+    prepare_post
   end
 
   def update
@@ -38,6 +41,7 @@ class Backend::ArticlesController < BackendController
       end
     else
       @errors = @article.errors.full_messages
+      prepare_post
       flash.now[:error] = @errors
       render :edit
     end
@@ -50,6 +54,10 @@ class Backend::ArticlesController < BackendController
   end
 
   private
+
+  def prepare_post
+    @categories = Category.all.map {|c| [c.name, c.id]}
+  end
 
   def article_params
     params.require(:article).permit(:title,

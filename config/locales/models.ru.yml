@@ -64,3 +64,5 @@ ru:
         source:           Источник
       article:
         <<: *defaults
+        category_id:      Главная категория
+        category_ids:     Категории

@@ -47,6 +47,14 @@ class Article < ActiveRecord::Base
   # ==================================================================================
   # Scopes
 
+  # Relations
+  # ==================================================================================
+  belongs_to :category
+  has_many :categories, through: :category_articles
+  has_many :category_articles, dependent: :destroy
+  # ==================================================================================
+  # Relations
+
   # Callbacks
   # ==================================================================================
   before_save :set_seo_keywords, if: 'seo_keywords.blank?'
