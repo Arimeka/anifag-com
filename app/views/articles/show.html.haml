@@ -9,9 +9,6 @@
         .main-image= image_tag 'dummy/780x564.png', class: 'img-responsive', size: '780x564'
         .body
           = @article.content.html_safe
-
-          .embed-responsive.embed-responsive-16by9
-            %iframe{width: 800, height: 450,  src: 'https://www.youtube.com/embed/QeaFvbUi7mU?rel=0&amp;controls=0', frameborder: 0, allowfullscreen: ''}
     .row.same-posts-block
       .h2 Похожие записи
       .row.posts

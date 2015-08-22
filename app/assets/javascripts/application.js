@@ -19,4 +19,5 @@
 //= require videojs-youtube
 //= require galleries
 //= require bootstrap
+//= require videos
 //= require_self
