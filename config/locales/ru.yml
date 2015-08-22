@@ -14,3 +14,11 @@ ru:
     next_label:     "&raquo;"
     previous_label: "&laquo;"
     page_gap:       "..."
+
+  label:
+
+    form:
+      main:                     Общее
+      media:                    Медиа
+      seo:                      SEO
+      adding_by_enter_or_comma: Добавление по Enter или ,

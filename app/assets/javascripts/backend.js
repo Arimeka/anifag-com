@@ -17,5 +17,10 @@
 //= require bootstrap-datetimepicker
 //= require moment/locale/ru
 //= require bootstrap
+//= require bootstrap-tokenfield
+//= require twitter/typeahead
+
 //= require backend/shared/timepicker
+//= require backend/shared/tokenizer
+
 //= require_self
