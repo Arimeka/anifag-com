@@ -54,5 +54,9 @@ ru:
         description:      Описание
         is_published:     Опубликовано
         tag_list:         Теги
+        main_image:       Главное изображение
+        seo_slug:         Канонический урл
+        seo_keywords:     Ключевые слова
+        seo_description:  SEO-описание
       article:
         <<: *defaults

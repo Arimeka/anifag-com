@@ -8,10 +8,9 @@
       %li
         %a{href:'#tab3', 'data-toggle' => 'tab'}= t('label.form.seo')
     .tab-content
-      #tab1.tab-pane.active
-        = render 'tab1'
-      #tab2.tab-pane
-      #tab3.tab-pane
+      #tab1.tab-pane.active= render 'tab1'
+      #tab2.tab-pane= render 'tab2'
+      #tab3.tab-pane= render 'tab3'
     .row
       .col-sm-12
         .well
