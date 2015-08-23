@@ -6,18 +6,21 @@
     .row
       %article.content
         %h1.title= @article.title
-        .main-image= image_tag 'dummy/780x564.png', class: 'img-responsive', size: '780x564'
+        - if @article.is_video?
+          .main-video= @article.embed_video.html_safe
+        - else
+          .main-image= image_tag 'dummy/780x564.png', class: 'img-responsive', size: '780x564'
         .body
           = @article.content.html_safe
-    .row.same-posts-block
-      .h2 Похожие записи
-      .row.posts
-        - 6.times do
-          %article.col-lg-4.col-sm-4.col-xs-12
-            = link_to article_path(1) do
-              = image_tag 'dummy/250x211.png', class: 'img-responsive', size: '250x211'
-              %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
+    - if @same_articles.present?
+      .row.same-posts-block
+        .h2 Похожие записи
+        .row.posts
+          = render partial: 'articles/article_small', collection: @same_articles, as: :article
 
   %aside.col-lg-3
-    = render 'shared/blocks/aside_video_block'
+    - if @article.is_video?
+      = render 'shared/blocks/aside_post_block'
+    - else
+      = render 'shared/blocks/aside_video_block'
     = render 'shared/blocks/aside_gallery_block'

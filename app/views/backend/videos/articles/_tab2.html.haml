@@ -1,0 +1,10 @@
+.row
+  .col-sm-12
+    .form-group
+      = form.label :main_image, class: 'col-sm-2 control-label'
+      .col-sm-4= file_field_tag 'main_image', class: 'form-control'
+.row
+  .col-sm-12
+    .form-group
+      = form.label :embed_video, class: 'col-sm-2 control-label'
+      .col-sm-8= form.text_area :embed_video, rows: 10, cols: 25, class: 'form-control'

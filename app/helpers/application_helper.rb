@@ -1,6 +1,6 @@
 module ApplicationHelper
   def active_action?(name, action)
-    'active' if controller_name == name && action_name == action
+    'active' if controller.class.name.underscore == name && action_name == action
   end
 
   def get_current_path

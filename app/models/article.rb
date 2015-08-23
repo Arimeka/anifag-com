@@ -16,6 +16,7 @@
 #  published_at    :datetime         not null                 # Дата публикации
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  embed_video     :string           default(""), not null    # Код встраиваемого видео
 #
 
 class Article < ActiveRecord::Base
@@ -31,8 +32,13 @@ class Article < ActiveRecord::Base
   # ==================================================================================
   scope :published, -> { where(is_published: true).where('published_at <= ?', Time.zone.now) }
 
+  scope :gallery, -> { where(is_gallery: true) }
+  scope :video,   -> { where(is_video: true) }
+  scope :post,    -> { where(is_gallery: false, is_video: false) }
+
   scope :tops, -> (exclude_ids = [0]) {
                       published
+                      .post
                       .where('id NOT IN (?)', exclude_ids)
                       .order(published_at: :desc)
                       .limit(4)
@@ -44,6 +50,10 @@ class Article < ActiveRecord::Base
                           .order(published_at: :desc)
                           .limit(9)
                         }
+
+  scope :posts,     -> (exclude_ids = [0]) { post.others(exclude_ids) }
+  scope :videos,    -> (exclude_ids = [0]) { video.others(exclude_ids) }
+  scope :galleries, -> (exclude_ids = [0]) { gallery.others(exclude_ids) }
   # ==================================================================================
   # Scopes
 
@@ -65,7 +75,7 @@ class Article < ActiveRecord::Base
   # ==================================================================================
   class << self
     def main_big
-      self.published.order(published_at: :desc).first
+      self.published.post.order(published_at: :desc).first
     end
   end
   # ==================================================================================
@@ -79,6 +89,13 @@ class Article < ActiveRecord::Base
     else
       super
     end
+  end
+
+  def same
+    Article.published
+            .where('id NOT IN (?)', id)
+            .tagged_with(self.tag_list, on: :tags, any: true)
+            .limit(6)
   end
   # ==================================================================================
   # Instance methods

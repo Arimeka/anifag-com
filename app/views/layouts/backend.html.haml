@@ -50,19 +50,19 @@
       .row
         .col-sm-3.col-md-2.sidebar
           %ul.nav.nav-sidebar
-            %li{class: active_action?('dashboard', 'index')}
+            %li{class: active_action?('backend/dashboard_controller', 'index')}
               = link_to backend_root_path do
                 %i.fa.fa-tachometer
                 Главная
-            %li{class: active_action?('articles', 'index')}
+            %li{class: active_action?('backend/articles_controller', 'index')}
               = link_to backend_articles_path do
                 %i.fa.fa-list-alt
                 = t('activerecord.models.article.title')
-            %li{class: active_action?('videos', 'index')}
-              = link_to '#' do
+            %li{class: active_action?('backend/videos/articles_controller', 'index')}
+              = link_to backend_videos_articles_path do
                 %i.fa.fa-youtube-play
                 = t('activerecord.models.video.title')
-            %li{class: active_action?('galleries', 'index')}
+            %li{class: active_action?('backend/galleries/articles_controller', 'index')}
               = link_to '#' do
                 %i.fa.fa-picture-o
                 = t('activerecord.models.gallery.title')

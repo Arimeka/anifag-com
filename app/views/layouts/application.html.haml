@@ -67,9 +67,9 @@
 
                     .collapse.navbar-collapse#navbar-collapse
                       %ul.nav.navbar-nav
-                        %li{class: active_action?('articles', 'index')}= link_to t('activerecord.models.article.title'), articles_path
-                        %li{class: active_action?('galleries', 'index')}= link_to t('activerecord.models.gallery.title'), galleries_path
-                        %li{class: active_action?('videos', 'index')}= link_to t('activerecord.models.video.title'), videos_path
+                        %li{class: active_action?('articles_controller', 'index')}= link_to t('activerecord.models.article.title'), articles_path
+                        %li{class: active_action?('galleries_controller', 'index')}= link_to t('activerecord.models.gallery.title'), galleries_path
+                        %li{class: active_action?('videos_controller', 'index')}= link_to t('activerecord.models.video.title'), videos_path
 
         %main
           .container

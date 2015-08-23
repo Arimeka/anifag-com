@@ -16,6 +16,7 @@
 #  published_at    :datetime         not null                 # Дата публикации
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  embed_video     :string           default(""), not null    # Код встраиваемого видео
 #
 
 FactoryGirl.define do

@@ -1,8 +1,5 @@
-.row.video-block
-  %h2.block-title= t('activerecord.models.video.title')
-  .row.videos
-    - 4.times do
-      %article.col-lg-12.col-sm-6.col-xs-12
-        = link_to video_path(1) do
-          = image_tag 'dummy/250x211.png', class: 'img-responsive', size: '250x211'
-          %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
+- if @aside_videos.present?
+  .row.video-block
+    %h2.block-title= t('activerecord.models.video.title')
+    .row.videos
+      = render partial: 'articles/article_aside', collection: @aside_videos, as: :article

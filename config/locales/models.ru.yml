@@ -64,5 +64,6 @@ ru:
         source:           Источник
       article:
         <<: *defaults
+        embed_video:      Код вставки видео
         category_id:      Главная категория
         category_ids:     Категории

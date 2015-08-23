@@ -6,7 +6,7 @@
       = render partial: 'articles/article_top', collection: @articles_top, as: :article
     .row.posts-feed
       = render partial: 'articles/article_small', collection: @articles_other, as: :article
-    .row
+    .row.see-all
       .col-sm-6.col-sm-offset-3
         = link_to t('label.articles.all'), articles_path, class: 'btn btn-primary btn-lg btn-block'
   %aside.col-lg-3

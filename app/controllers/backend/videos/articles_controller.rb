@@ -1,6 +1,6 @@
-class Backend::ArticlesController < BackendController
+class Backend::Videos::ArticlesController < BackendController
   def index
-    @articles = Article.post.order(published_at: :desc).page params[:page]
+    @articles = Article.video.order(published_at: :desc).page params[:page]
   end
 
   def new
@@ -10,12 +10,13 @@ class Backend::ArticlesController < BackendController
 
   def create
     @article = Article.new(article_params)
+    @article.is_video = true
 
     if @article.save
       if params[:commit] == t('form.save_and_exit')
-        redirect_to backend_articles_url
+        redirect_to backend_videos_articles_url
       else
-        redirect_to edit_backend_article_url(@article)
+        redirect_to edit_backend_videos_article_url(@article)
       end
     else
       @errors = @article.errors.full_messages
@@ -26,18 +27,19 @@ class Backend::ArticlesController < BackendController
   end
 
   def edit
-    @article = Article.post.find(params[:id])
+    @article = Article.video.find(params[:id])
     prepare_post
   end
 
   def update
-    @article = Article.post.find(params[:id])
+    @article = Article.video.find(params[:id])
+    @article.is_video = true
 
     if @article.update_attributes(article_params)
       if params[:commit] == t('form.save_and_exit')
-        redirect_to backend_articles_url
+        redirect_to backend_videos_articles_url
       else
-        redirect_to edit_backend_article_url(@article)
+        redirect_to edit_backend_videos_article_url(@article)
       end
     else
       @errors = @article.errors.full_messages
@@ -48,9 +50,9 @@ class Backend::ArticlesController < BackendController
   end
 
   def destroy
-    @article = Article.post.find(params[:id])
+    @article = Article.video.find(params[:id])
     @article.destroy
-    redirect_to backend_articles_url
+    redirect_to backend_videos_articles_url
   end
 
   private
@@ -69,6 +71,7 @@ class Backend::ArticlesController < BackendController
                                     :seo_slug,
                                     :seo_keywords,
                                     :seo_description,
+                                    :embed_video,
                                     :published_at,
                                     :tag_list,
                                     :category_id,

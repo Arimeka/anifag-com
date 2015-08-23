@@ -4,4 +4,10 @@
 
 .articles {
   @import 'partials/article_body';
+
+  .content {
+    .main-video {
+      margin-bottom: 20px;
+    }
+  }
 }
