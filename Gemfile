@@ -15,6 +15,10 @@ gem 'kaminari'
 # Taggins
 gem 'acts-as-taggable-on', '~> 3.4'
 
+# File upload
+gem 'paperclip', '~> 4.3'
+gem 'aws-sdk', '~> 1.6'
+
 # CSS
 gem 'sass-rails', '~> 5.0'
 gem 'twitter-bootstrap-rails'

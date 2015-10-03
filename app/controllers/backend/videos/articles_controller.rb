@@ -59,6 +59,7 @@ class Backend::Videos::ArticlesController < BackendController
 
   def prepare_post
     @categories = Category.all.map {|c| [c.name, c.id]}
+    @article.build_main_image if @article.main_image.blank?
   end
 
   def article_params
@@ -75,6 +76,7 @@ class Backend::Videos::ArticlesController < BackendController
                                     :published_at,
                                     :tag_list,
                                     :category_id,
-                                    :category_ids => [])
+                                    category_ids: [],
+                                    main_image_attributes: [:id, :file, :_destroy])
   end
 end

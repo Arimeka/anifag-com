@@ -48,6 +48,11 @@ GEM
       execjs
       json
     awesome_print (1.6.1)
+    aws-sdk (1.66.0)
+      aws-sdk-v1 (= 1.66.0)
+    aws-sdk-v1 (1.66.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -70,6 +75,10 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.7)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -130,6 +139,7 @@ GEM
     migration_comments (0.3.2)
       activerecord (>= 2.3.2)
     mime-types (2.5)
+    mimemagic (0.3.0)
     mini_portile (0.6.2)
     minitest (5.6.1)
     momentjs-rails (2.10.3)
@@ -140,6 +150,12 @@ GEM
     net-ssh (2.9.2)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    paperclip (4.3.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      cocaine (~> 0.5.5)
+      mime-types
+      mimemagic (= 0.3.0)
     pg (0.18.2)
     photoswipe-rails (4.1.0)
     pry (0.10.1)
@@ -175,8 +191,8 @@ GEM
       rails-assets-jquery (~> 2.1.0)
     rails-assets-jquery (2.1.4)
     rails-assets-moment (2.10.6)
-    rails-assets-video.js (4.12.14)
-    rails-assets-videojs-youtube (1.2.12)
+    rails-assets-video.js (4.12.15)
+    rails-assets-videojs-youtube (1.2.13)
       rails-assets-video.js (>= 4.11, < 5)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
@@ -288,6 +304,7 @@ DEPENDENCIES
   annotate
   autoprefixer-rails
   awesome_print
+  aws-sdk (~> 1.6)
   better_errors
   binding_of_caller
   bootstrap3-datetimepicker-rails (~> 4.14.30)
@@ -303,6 +320,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   migration_comments
+  paperclip (~> 4.3)
   pg
   photoswipe-rails
   pry
