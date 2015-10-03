@@ -21,6 +21,12 @@ module AnifagCom
 
     config.active_record.raise_in_transactional_callbacks = true
 
+    # Custom configurations
+    # ==================================================================================
+    config.s3 = YAML.load_file(Rails.root.join('config','s3.yml'))[Rails.env]
+    # ==================================================================================
+    # Custom configurations
+
     config.generators do |g|
       g.template_engine     :haml
       g.test_framework      :rspec, fixture: false, view: false

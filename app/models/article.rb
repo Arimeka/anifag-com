@@ -62,6 +62,10 @@ class Article < ActiveRecord::Base
   belongs_to :category
   has_many :categories, through: :category_articles
   has_many :category_articles, dependent: :destroy
+
+  has_one :main_image, foreign_key: :attachable_id, class_name: "#{self}::MainImage", dependent: :destroy
+  accepts_nested_attributes_for :main_image, allow_destroy: true
+
   # ==================================================================================
   # Relations
 
