@@ -32,7 +32,7 @@ class Article < ActiveRecord::Base
   # ==================================================================================
   scope :published, -> { where(is_published: true).where('published_at <= ?', Time.zone.now) }
 
-  scope :gallery, -> { where(is_gallery: true) }
+  scope :gallery, -> { includes(gallery_files: :article).where(is_gallery: true) }
   scope :video,   -> { where(is_video: true) }
   scope :post,    -> { where(is_gallery: false, is_video: false) }
 
@@ -65,6 +65,9 @@ class Article < ActiveRecord::Base
 
   has_one :main_image, foreign_key: :attachable_id, class_name: "#{self}::MainImage", dependent: :destroy
   accepts_nested_attributes_for :main_image, allow_destroy: true
+
+  has_many :gallery_files, dependent: :destroy, inverse_of: :article
+  accepts_nested_attributes_for :gallery_files, allow_destroy: true
 
   # ==================================================================================
   # Relations

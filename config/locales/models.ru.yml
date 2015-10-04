@@ -67,3 +67,7 @@ ru:
         embed_video:      Код вставки видео
         category_id:      Главная категория
         category_ids:     Категории
+        gallery_files:    Файлы галереи
+      gallery_file:
+        title:            Название файла
+        description:      Описание файла

@@ -1,0 +1,12 @@
+.modal.fade#dropzoneModal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{'aria-label' => 'Close', 'data-dismiss' => 'modal', type: 'button'}
+          %span{'aria-hidden' => 'true'} ×
+        %h4.modal-title Добавить файлы в галерею
+      .modal-body
+        = form_tag upload_backend_galleries_article_path(@article), class: 'dropzone', id: 'galleryDropzone' do
+          %div.fallback
+            = file_field_tag 'file', multiple: true
+

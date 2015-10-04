@@ -19,8 +19,12 @@
 //= require bootstrap
 //= require bootstrap-tokenfield
 //= require twitter/typeahead
+//= require dropzone
+//= require Sortable/Sortable
 
 //= require backend/shared/timepicker
 //= require backend/shared/tokenizer
+
+//= require backend/articles
 
 //= require_self

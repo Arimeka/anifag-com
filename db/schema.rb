@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150823055236) do
+ActiveRecord::Schema.define(version: 20151004075127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,19 @@ ActiveRecord::Schema.define(version: 20150823055236) do
     t.integer  "article_id",  null: false, comment: "Внешний ключ для связи с публикациями"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "gallery_files", force: :cascade, comment: "Файлы галерей" do |t|
+    t.string   "title",             default: "", null: false, comment: "Название файла"
+    t.string   "description",       default: "", null: false, comment: "Описание файла"
+    t.integer  "placement_index",   default: 0,  null: false, comment: "Позиция в галерее"
+    t.integer  "article_id",                     null: false, comment: "Связь со статьей, к которой крепятся файлы"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   create_table "media_files", force: :cascade, comment: "Медиа-файлы" do |t|

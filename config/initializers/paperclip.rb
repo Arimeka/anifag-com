@@ -42,3 +42,14 @@ end
 Paperclip.interpolates(:s3_custom_url) do |attachment, style|
   attachment.public_url(attachment, style)
 end
+
+Paperclip.interpolates(:gallery_id_partition) do |attachment, style|
+  case id = attachment.instance.article.id
+  when Integer
+    ("%09d" % id).scan(/\d{3}/).join("/")
+  when String
+    id.scan(/.{3}/).first(3).join("/")
+  else
+    nil
+  end
+end

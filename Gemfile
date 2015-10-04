@@ -37,6 +37,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 # JSON API builder
 gem 'jbuilder', '~> 2.0'
+# Drug'n'Drop Upload
+gem 'dropzonejs-rails'
 
 gem 'photoswipe-rails'
 gem 'videojs_rails'
@@ -46,6 +48,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-videojs-youtube'
   gem 'rails-assets-moment'
   gem 'rails-assets-bootstrap-tokenfield'
+  gem 'rails-assets-Sortable'
 end
 
 # HTML
