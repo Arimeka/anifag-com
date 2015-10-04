@@ -67,7 +67,6 @@ class Backend::Videos::ArticlesController < BackendController
                                     :content,
                                     :is_published,
                                     :is_video,
-                                    :is_gallery,
                                     :source,
                                     :seo_slug,
                                     :seo_keywords,

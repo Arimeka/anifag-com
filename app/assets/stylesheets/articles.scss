@@ -4,10 +4,28 @@
 
 .articles {
   @import 'partials/article_body';
+  @import 'cbp_fwslider';
 
   .content {
     .main-video {
       margin-bottom: 20px;
+    }
+  }
+
+  .cbp-fwslider {
+    ul {
+      display: table;
+      li {
+        float: initial;
+        display: table-cell;
+        vertical-align: middle;
+
+        a {
+          img {
+            max-height: 600px;
+          }
+        }
+      }
     }
   }
 }

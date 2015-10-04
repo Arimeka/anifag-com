@@ -3,11 +3,8 @@
 .row
   .col-lg-9
     .row.galleries-feed
-      - 30.times do
-        %article.col-lg-4.col-sm-4.col-xs-12
-          = link_to gallery_path(1) do
-            = image_tag 'dummy/250x211.png', class: 'img-responsive', size: '250x211'
-            %h4.title Lorem ipsum dolor sit amet, consectetur adipisicing elit
+      = render partial: 'articles/article_small', collection: @articles, as: :article
+    = render 'shared/blocks/pagination'
   %aside.col-lg-3
     = render 'shared/blocks/aside_post_block'
     = render 'shared/blocks/aside_video_block'

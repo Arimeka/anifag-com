@@ -6,5 +6,6 @@ class HomeController < ApplicationController
     exclude_ids += collect_ids(@articles_top)
     @articles_other = Article.posts(exclude_ids)
     @aside_videos = Article.videos.limit(4)
+    @aside_galleries = Article.galleries.limit(4)
   end
 end

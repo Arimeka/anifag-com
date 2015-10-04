@@ -1,14 +1,32 @@
 - content_for :title, "#{@article.title} - Anime Fag"
 - content_for :description, @article.seo_description
 - content_for :keywords, @article.seo_keywords
+
+- if @article.is_gallery?
+  .row
+    .col-lg-9
+      .row
+        .content
+          %h1.title= @article.title
+  .row
+  .col-lg-12
+    .row
+      .cbp-fwslider#cbp-fwslider
+        %ul
+          - @article.gallery_files.each do |file|
+            %li{data: {src: file.url, width: file.original_width, height: file.original_height }}
+              = link_to '#' do
+                = image_tag file.url('600x'), alt: file.description
+
 .row
   .col-lg-9
     .row
       %article.content
-        %h1.title= @article.title
+        - unless @article.is_gallery?
+          %h1.title= @article.title
         - if @article.is_video?
           .main-video= @article.embed_video.html_safe
-        - else
+        - elsif !@article.is_gallery?
           .main-image= image_tag 'dummy/780x564.png', class: 'img-responsive', size: '780x564'
         .body
           = @article.content.html_safe
@@ -21,6 +39,14 @@
   %aside.col-lg-3
     - if @article.is_video?
       = render 'shared/blocks/aside_post_block'
+      = render 'shared/blocks/aside_gallery_block'
+    - elsif @article.is_gallery?
+      = render 'shared/blocks/aside_video_block'
+      = render 'shared/blocks/aside_post_block'
     - else
       = render 'shared/blocks/aside_video_block'
-    = render 'shared/blocks/aside_gallery_block'
+      = render 'shared/blocks/aside_gallery_block'
+
+
+- if @article.is_gallery?
+  = render 'photoswipe'

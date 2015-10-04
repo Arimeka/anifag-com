@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   resources :articles, only: [:index, :show] do
     collection { get 'page/:page', to: 'articles#index_page' }
   end
-  resources :galleries, only: [:index, :show]
-  resources :videos, only: [:index, :show] do
+  resources :galleries, only: [:index] do
+    collection { get 'page/:page', to: 'galleries#index_page' }
+  end
+  resources :videos, only: [:index] do
     collection { get 'page/:page', to: 'videos#index_page' }
   end
 

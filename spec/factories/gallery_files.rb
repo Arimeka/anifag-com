@@ -13,6 +13,8 @@
 #  file_content_type :string
 #  file_file_size    :integer
 #  file_updated_at   :datetime
+#  original_height   :integer          default(0), not null  # Высота оригинального изображения
+#  original_width    :integer          default(0), not null  # Ширина оригинального изображения
 #
 
 FactoryGirl.define do

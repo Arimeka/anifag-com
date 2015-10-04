@@ -13,6 +13,8 @@
 #  file_content_type :string
 #  file_file_size    :integer
 #  file_updated_at   :datetime
+#  original_height   :integer          default(0), not null  # Высота оригинального изображения
+#  original_width    :integer          default(0), not null  # Ширина оригинального изображения
 #
 
 class GalleryFile < ActiveRecord::Base
@@ -32,6 +34,7 @@ class GalleryFile < ActiveRecord::Base
   delegate :path, to: :file
 
   before_post_process :randomize_file_name
+  before_save :extract_dimensions
 
   # Validations
   # ==================================================================================
@@ -62,6 +65,15 @@ class GalleryFile < ActiveRecord::Base
     if file_file_name_changed?
       extension = File.extname(file_file_name).downcase
       self.file.instance_write(:file_name, "#{SecureRandom.hex}#{extension}")
+    end
+  end
+
+  def extract_dimensions
+    tempfile = file.queued_for_write[:original]
+    unless tempfile.nil?
+      geometry = Paperclip::Geometry.from_file(tempfile)
+      self.original_width = geometry.width.to_i
+      self.original_height = geometry.height.to_i
     end
   end
   # ==================================================================================

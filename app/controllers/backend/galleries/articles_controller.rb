@@ -16,7 +16,7 @@ class Backend::Galleries::ArticlesController < BackendController
 
   def update
     @article = Article.gallery.find(params[:id])
-    @article.is_video = true
+    @article.is_gallery = true
 
     if @article.update_attributes(article_params)
       if params[:commit] == t('form.save_and_exit')
@@ -69,7 +69,6 @@ class Backend::Galleries::ArticlesController < BackendController
     params.require(:article).permit(:title,
                                     :content,
                                     :is_published,
-                                    :is_video,
                                     :is_gallery,
                                     :source,
                                     :seo_slug,

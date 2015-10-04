@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151004075127) do
+ActiveRecord::Schema.define(version: 20151004133045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20151004075127) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
+    t.integer  "original_height",   default: 0,  null: false, comment: "Высота оригинального изображения"
+    t.integer  "original_width",    default: 0,  null: false, comment: "Ширина оригинального изображения"
   end
 
   create_table "media_files", force: :cascade, comment: "Медиа-файлы" do |t|
