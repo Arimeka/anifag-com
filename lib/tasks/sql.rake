@@ -143,6 +143,8 @@ namespace :sql do
     Article.update_all("content = replace(content, 'http://4.bp.blogspot.com', 'https://lh4.googleusercontent.com')")
     Article.update_all("content = replace(content, 'http://5.bp.blogspot.com', 'https://lh5.googleusercontent.com')")
 
+    Article.where("title LIKE '%игурка%'").update_all(is_gallery: true)
+
     Article.find_each do |article|
       description = if article.title =~ /Weekly Vocaloid Ranking/
                       date = article.title[/Weekly Vocaloid Ranking \((.+)\)/, 1]
