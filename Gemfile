@@ -49,6 +49,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-moment'
   gem 'rails-assets-bootstrap-tokenfield'
   gem 'rails-assets-Sortable'
+  gem 'rails-assets-fotorama'
 end
 
 # HTML

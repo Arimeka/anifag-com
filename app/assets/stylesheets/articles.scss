@@ -4,7 +4,7 @@
 
 .articles {
   @import 'partials/article_body';
-  @import 'cbp_fwslider';
+  @import "fotorama";
 
   .content {
     .main-video {
@@ -12,20 +12,32 @@
     }
   }
 
-  .cbp-fwslider {
-    ul {
-      display: table;
-      li {
-        float: initial;
-        display: table-cell;
-        vertical-align: middle;
+  .fotorama {
+    .fotorama__wrap, img {
+      margin: 0 auto;
+    }
 
-        a {
+    img {
+      display: block;
+    }
+
+    .fotorama__wrap {
+      .fotorama__stage__shaft {
+        .fotorama__stage__frame {
           img {
-            max-height: 600px;
+            margin: 0;
+          }
+
+          .fotorama__html {
+            div, a {
+              display: block;
+              height: 100%;
+              background: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
+            }
           }
         }
       }
+
     }
   }
 }

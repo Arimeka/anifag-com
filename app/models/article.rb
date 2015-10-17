@@ -32,9 +32,9 @@ class Article < ActiveRecord::Base
   # ==================================================================================
   scope :published, -> { where(is_published: true).where('published_at <= ?', Time.zone.now) }
 
-  scope :gallery, -> { includes(gallery_files: :article).where(is_gallery: true) }
-  scope :video,   -> { where(is_video: true) }
-  scope :post,    -> { where(is_gallery: false, is_video: false) }
+  scope :gallery, -> { includes(:main_image, gallery_files: :article).where(is_gallery: true) }
+  scope :video,   -> { includes(:main_image).where(is_video: true) }
+  scope :post,    -> { includes(:main_image).where(is_gallery: false, is_video: false) }
 
   scope :tops, -> (exclude_ids = [0]) {
                       published
@@ -103,6 +103,19 @@ class Article < ActiveRecord::Base
             .where('id NOT IN (?)', id)
             .tagged_with(self.tag_list, on: :tags, any: true)
             .limit(6)
+  end
+
+  def gallery_json
+    data = []
+    self.gallery_files.each do |file|
+      data << {
+                src: file.url,
+                w: file.original_width,
+                h: file.original_height,
+                title: file.description
+              }
+    end
+    data.to_json
   end
   # ==================================================================================
   # Instance methods

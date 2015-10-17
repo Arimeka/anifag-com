@@ -11,12 +11,12 @@
   .row
   .col-lg-12
     .row
-      .cbp-fwslider#cbp-fwslider
-        %ul
-          - @article.gallery_files.each do |file|
-            %li{data: {src: file.url, width: file.original_width, height: file.original_height }}
-              = link_to '#' do
-                = image_tag file.url('600x'), alt: file.description
+      :coffee
+        window.galleryImages = #{@article.gallery_json}
+      .fotorama{data: {width: '100%', maxheight: '600px'}}
+        - @article.gallery_files.each do |file|
+          %div{data: { caption: file.description, img: file.url('600x') }}
+            = link_to '', '#', class: 'js-fullscreen', data: {src: file.url, width: file.original_width, height: file.original_height }
 
 .row
   .col-lg-9
