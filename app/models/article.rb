@@ -100,6 +100,7 @@ class Article < ActiveRecord::Base
 
   def same
     Article.published
+            .includes(:main_image)
             .where('id NOT IN (?)', id)
             .tagged_with(self.tag_list, on: :tags, any: true)
             .limit(6)

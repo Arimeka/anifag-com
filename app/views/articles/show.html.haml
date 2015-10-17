@@ -26,8 +26,8 @@
           %h1.title= @article.title
         - if @article.is_video?
           .main-video= @article.embed_video.html_safe
-        - elsif !@article.is_gallery?
-          .main-image= image_tag 'dummy/780x564.png', class: 'img-responsive', size: '780x564'
+        - elsif !@article.is_gallery? && @article.main_image.present?
+          .main-image= image_tag @article.main_image.url('780x564'), class: 'img-responsive', size: '780x564'
         .body
           = @article.content.html_safe
     - if @same_articles.present?

@@ -68,6 +68,8 @@ group :development do
   gem 'binding_of_caller'
   gem 'quiet_assets', '~> 1.0.3'
   gem 'annotate'
+
+  gem 'fog'
 end
 
 group :development, :test do
