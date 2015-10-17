@@ -96,4 +96,39 @@ namespace :content do
       end
     end
   end
+
+  desc 'Установка флага видео'
+  task :convert_videos do
+    Article.where("title LIKE '%ролик%'").find_each do |post|
+      unless post.embed_video.present?
+        content = Nokogiri::HTML(post.content)
+        video = content.at_css('iframe')
+        unless video.present?
+          video = content.at_css('object')
+          if video.present?
+            src = video.at_css('embed')['src']
+          else
+            next
+          end
+        else
+          src = video['src']
+        end
+        begin
+          uri = URI.parse(src)
+
+          if uri.host =~ /youtu/
+            id = uri.path.split('/').last
+            post.embed_video = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/#{id}?rel=0&amp;controls=0\" frameborder=\"0\" allowfullscreen></iframe>"
+            video.remove
+            post.content = content.at_css('body').children.to_html
+            post.is_video = true
+            post.save
+          end
+        rescue => e
+          puts e.message
+          next
+        end
+      end
+    end
+  end
 end

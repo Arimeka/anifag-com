@@ -45,7 +45,6 @@ gem 'videojs_rails'
 gem 'twitter-typeahead-rails'
 
 source 'https://rails-assets.org' do
-  gem 'rails-assets-videojs-youtube'
   gem 'rails-assets-moment'
   gem 'rails-assets-bootstrap-tokenfield'
   gem 'rails-assets-Sortable'
