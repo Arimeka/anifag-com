@@ -24,6 +24,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 gem 'autoprefixer-rails'
+
+# Wysiwyg
 gem 'tinymce-rails'
 
 # JS

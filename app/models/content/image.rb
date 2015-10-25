@@ -40,6 +40,33 @@ class Content::Image < ActiveRecord::Base
   # ==================================================================================
   # Validations
 
+  # Class methods
+  # ==================================================================================
+
+  def self.index_as_hash(offset, limit = 10)
+    images = self.order('created_at DESC').offset(offset.to_i).limit(limit.to_i)
+    images.map(&:as_hash)
+  end
+
+  # ==================================================================================
+  # Class methods
+
+  # Instance methods
+  # ==================================================================================
+
+  def as_hash
+    {
+      id: id,
+      title: title,
+      description: description,
+      image: url('250x250'),
+      url: url('560x')
+    }
+  end
+
+  # ==================================================================================
+  # Instance methods
+
 
   # Private methods
   # ==================================================================================
