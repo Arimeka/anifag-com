@@ -2,41 +2,66 @@
 - content_for :description, @article.seo_description
 - content_for :keywords, @article.seo_keywords
 
-- if @article.is_gallery?
-  .row
-    .col-lg-9
-      .row
-        .content
-          %h1.title= @article.title
-  .row
-  .col-lg-12
-    .row
-      :coffee
-        window.galleryImages = #{@article.gallery_json}
-      .fotorama{data: {width: '100%', maxheight: '600px'}}
-        - @article.gallery_files.each do |file|
-          %div{data: { caption: file.description, img: file.url('600x') }}
-            = link_to '', '#', class: 'js-fullscreen', data: {src: file.url, width: file.original_width, height: file.original_height }
-
 .row
-  .col-lg-9
+  .col-lg-9.col-md-9
     .row
       %article.content
         - unless @article.is_gallery?
           %h1.title= @article.title
         - if @article.is_video?
           .main-video= @article.embed_video.html_safe
-        - elsif !@article.is_gallery? && @article.main_image.present?
+        - elsif @article.is_gallery?
+          :coffee
+            window.galleryImages = #{@article.gallery_json}
+          .fotorama{data: {width: '100%', maxheight: '600px'}}
+            - @article.gallery_files.each do |file|
+              %div{data: { caption: file.description, img: file.url('600x') }}
+                = link_to '', '#', class: 'js-fullscreen', data: {src: file.url, width: file.original_width, height: file.original_height }
+        - elsif @article.main_image.present?
           .main-image= image_tag @article.main_image.url('x564'), class: 'img-responsive'
         .body
-          = @article.content.html_safe
+          .info.col-lg-3.col-md-3.hidden-sm.hidden-xs
+            = time_tag @article.published_at, @article.published_at.strftime("%d-%m-%Y %H:%M")
+            .sharing
+              %ul.list-unstyled
+                %li Поделиться
+                %li
+                  = link_to "http://vkontakte.ru/share.php??u=#{article_url(@article)}", target: '_blank', class: 'js-social-share', data: {type: 'vk'} do
+                    %i.vk
+                %li
+                  = link_to "https://www.facebook.com/sharer/sharer.php?u=#{article_url(@article)}", target: '_blank', class: 'js-social-share', data: {type: 'fb'} do
+                    %i.fb
+                %li
+                  = link_to "http://twitter.com/share??text=#{@article.title}&url=#{article_url(@article)}", target: '_blank', class: 'js-social-share', data: {type: 'tw'} do
+                    %i.tw
+                %li
+                  = link_to "https://plus.google.com/share?url=#{article_url(@article)}", target: '_blank', class: 'js-social-share', data: {type: 'gg'} do
+                    %i.gg
+          .info.col-sm-12.col-xs-12.visible-sm-inline-block.visible-xs-inline-block
+            = time_tag @article.published_at, @article.published_at.strftime("%d-%m-%Y %H:%M"), class: 'pull-right small'
+            .sharing
+              %ul.list-inline
+                %li
+                  = link_to "http://vkontakte.ru/share.php??u=#{article_url(@article)}", target: '_blank', class: 'js-social-share', data: {type: 'vk'} do
+                    %i.vk.small
+                %li
+                  = link_to "https://www.facebook.com/sharer/sharer.php?u=#{article_url(@article)}", target: '_blank', class: 'js-social-share', data: {type: 'fb'} do
+                    %i.fb.small
+                %li
+                  = link_to "http://twitter.com/share??text=#{@article.title}&url=#{article_url(@article)}", target: '_blank', class: 'js-social-share', data: {type: 'tw'} do
+                    %i.tw.small
+                %li
+                  = link_to "https://plus.google.com/share?url=#{article_url(@article)}", target: '_blank', class: 'js-social-share', data: {type: 'gg'} do
+                    %i.gg.small
+          .col-lg-9.col-md-9.col-sm-12.col-xs-12
+            = @article.content.html_safe
     - if @same_articles.present?
       .row.same-posts-block
         .h2 Похожие записи
         .row.posts
           = render partial: 'articles/article_small', collection: @same_articles, as: :article
 
-  %aside.col-lg-3
+  %aside.col-lg-3.col-md-3
     - if @article.is_video?
       = render 'shared/blocks/aside_post_block'
       = render 'shared/blocks/aside_gallery_block'

@@ -51,6 +51,7 @@ class Article < ActiveRecord::Base
                           .limit(9)
                         }
 
+  scope :feed,      -> (exclude_ids = [0]) { includes(:main_image).others(exclude_ids) }
   scope :posts,     -> (exclude_ids = [0]) { post.others(exclude_ids) }
   scope :videos,    -> (exclude_ids = [0]) { video.others(exclude_ids) }
   scope :galleries, -> (exclude_ids = [0]) { gallery.others(exclude_ids) }

@@ -10,6 +10,90 @@
     .main-video {
       margin-bottom: 20px;
     }
+
+    .body {
+      .info {
+        text-align: center;
+
+        &.col-sm-12 {
+          text-align: left;
+        }
+
+        time {
+          line-height: 50px;
+        }
+
+        .sharing {
+          ul {
+            font-size: 16px;
+
+          li {
+            margin-right: -10px;
+            i {
+                width: 48px;
+                height: 48px;
+
+
+
+                display: block;
+
+                text-indent: -9000px;
+                top: 0;
+                vertical-align: top;
+                left: 0;
+                position: relative;
+                margin: 5px auto;
+
+                &.vk {
+                  background: image-url('share-64x64.png') 0 0 no-repeat;
+                  background-size: cover;
+                }
+
+                &.fb {
+                  background: image-url('share-64x64.png') 0 -51px no-repeat;
+                  background-size: cover;
+                }
+
+                &.tw {
+                  background: image-url('share-64x64.png') 0 -103px no-repeat;
+                  background-size: cover;
+                }
+
+                &.gg {
+                  background: image-url('share-64x64.png') 0 -155px no-repeat;
+                  background-size: cover;
+                }
+
+                &.small {
+                  width: 32px;
+                  height: 32px;
+
+                  &.vk {
+                    background: image-url('share-64x64.png') 0 0 no-repeat;
+                    background-size: cover;
+                  }
+
+                  &.fb {
+                    background: image-url('share-64x64.png') 0 -34px no-repeat;
+                    background-size: cover;
+                  }
+
+                  &.tw {
+                    background: image-url('share-64x64.png') 0 -68px no-repeat;
+                    background-size: cover;
+                  }
+
+                  &.gg {
+                    background: image-url('share-64x64.png') 0 -102px no-repeat;
+                    background-size: cover;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
   .fotorama {

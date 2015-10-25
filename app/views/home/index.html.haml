@@ -1,14 +1,12 @@
 .row
-  .col-lg-9
+  .col-lg-9.col-md-9
     .row.biggest-post.center-block
       = render partial: 'articles/article_main_big', object: @article_main_big, as: :article
-    .row.big-posts
-      = render partial: 'articles/article_top', collection: @articles_top, as: :article
     .row.posts-feed
-      = render partial: 'articles/article_small', collection: @articles_other, as: :article
+      = render partial: 'articles/article_feed', collection: @articles_other, as: :article
     .row.see-all
       .col-sm-6.col-sm-offset-3
-        = link_to t('label.articles.all'), articles_path, class: 'btn btn-primary btn-lg btn-block'
-  %aside.col-lg-3
+        = link_to t('label.articles.more'), articles_path, class: 'btn btn-primary btn-lg btn-block'
+  %aside.col-lg-3.col-md-3
     = render 'shared/blocks/aside_video_block'
     = render 'shared/blocks/aside_gallery_block'
