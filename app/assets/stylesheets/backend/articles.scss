@@ -9,5 +9,27 @@ body.articles {
       padding-right: 25px;
     }
   }
+
+  .modal#uploadImage {
+    form#images-search {
+      margin-top: 15px;
+    }
+
+    .dropzone#imageDropzone {
+      margin: 20px;
+    }
+
+    #more {
+      margin-top: 20px;
+      a {
+        margin: 20px auto;
+      }
+    }
+  }
+
+  i.mce-i-upload:before {
+    content: "\f093";
+    font-family: FontAwesome;
+ }
 }
 

@@ -58,6 +58,7 @@ class Backend::ArticlesController < BackendController
   def prepare_post
     @categories = Category.all.map {|c| [c.name, c.id]}
     @article.build_main_image if @article.main_image.blank?
+    @images = ::Content::Image.order('created_at DESC').limit(10)
   end
 
   def article_params

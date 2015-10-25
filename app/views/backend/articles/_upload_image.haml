@@ -1,0 +1,43 @@
+.modal.fade#uploadImage
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        %button.close{'aria-label' => 'Close', 'data-dismiss' => 'modal', type: 'button'}
+          %span{'aria-hidden' => 'true'} ×
+        %h4.modal-title Загрузка изображений
+        .row
+          .col-sm-12
+            %form.form-inline#images-search
+              .form-group
+                %label.sr-only{for: 'search'} Поиск изображения
+                .input-group
+                  %input#search.form-control{placeholder: 'Поиск', type: 'text'}
+              %button.btn.btn-primary{type: 'submit'} Найти
+      .modal-body
+        .row
+          = form_tag backend_content_images_path, class: 'dropzone', id: 'imageDropzone' do
+            %div.fallback
+              = file_field_tag 'file', multiple: true
+        .row#images
+          .col-sm-12
+            - @images.each do |image|
+              .media{id: image.id}
+                .pull-left= image_tag image.url('250x250'), class: 'media-object', size: '250x250'
+                .media-body
+                  = form_for [:backend, image], remote: true do |form|
+                    .form-group
+                      = form.text_field :title, class: 'form-control'
+                    .form-group
+                      = form.text_area :description, rows: 5, maxlength: 255, size: 0, class: 'form-control'
+                    = link_to 'Вставить', '#', class: 'btn btn-success insert-image', data: {url: image.url('560x'), title: image.title, description: image.description}
+                    = form.submit t('form.save'), data: { disable_with: t('form.wait') }, class: 'btn btn-primary'
+                    = link_to 'Удалить', backend_content_image_path(image), class: 'pull-right btn btn-danger delete-image', remote: true, method: :delete, data: { confirm: t('form.sure?') }
+        .row#more
+          .col-sm-12
+            = link_to 'Еще', backend_content_images_path, class: 'btn btn-primary btn-block'
+            .spinner.hide
+              .rect1
+              .rect2
+              .rect3
+              .rect4
+              .rect5

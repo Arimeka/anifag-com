@@ -16,6 +16,10 @@ Rails.application.routes.draw do
 
     resources :articles, except: :show
 
+    namespace :content do
+      resources :images, only: [:index, :create, :update, :destroy]
+    end
+
     namespace :videos do
       resources :articles, except: :show
     end

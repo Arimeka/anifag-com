@@ -20,3 +20,4 @@
           - unless @article.new_record?
             = link_to t('form.delete'), backend_article_path(@article), method: :delete, data: { confirm: t('form.sure?') }, class: 'btn btn-danger pull-right'
 = tinymce
+= render 'upload_image'

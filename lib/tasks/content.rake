@@ -131,4 +131,53 @@ namespace :content do
       end
     end
   end
+
+  desc 'Перенос изображений из тела статей'
+  task :convert_images do
+    Article.where("content LIKE '%img %'").find_each do |post|
+      post_content = post.content
+
+      content = Nokogiri::HTML(post.content)
+
+      imgs = content.css('img')
+      imgs.each do |img|
+        src = img['src']
+        if img.parent.name == 'a'
+          img = img.parent
+          src = img['href']
+        end
+        src.gsub!('../', '')
+        uri = URI.parse(src)
+        unless uri.host
+          if uri.path[0] != '/'
+            uri.path = '/' + uri.path
+          end
+          uri.host = 'localhost'
+          uri.port = '3000'
+          uri.scheme = 'http'
+        end
+
+        image = Content::Image.new
+        begin
+          image.file = URI.parse(uri.to_s)
+        rescue OpenURI::HTTPError
+          s = uri.to_s.gsub('https://lh1.googleusercontent.com', 'http://1.bp.blogspot.com')
+                      .gsub('https://lh2.googleusercontent.com', 'http://2.bp.blogspot.com')
+                      .gsub('https://lh3.googleusercontent.com', 'http://3.bp.blogspot.com')
+                      .gsub('https://lh4.googleusercontent.com', 'http://4.bp.blogspot.com')
+                      .gsub('https://lh5.googleusercontent.com', 'http://5.bp.blogspot.com')
+          begin
+            image.file = URI.parse(s)
+          rescue OpenURI::HTTPError
+            next
+          end
+        end
+        if image.save
+          post_content = post_content.gsub(img.to_html, "<img class=\"img-responsive\" src=\"#{image.file.url('560x')}\" alt=\"\">")
+        end
+      end
+      post.content = post_content
+      post.save
+    end
+  end
 end

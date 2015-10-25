@@ -1,9 +1,11 @@
 toolbar:
   - code | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect | cut copy paste | bullist numlist | outdent indent | blockquote | undo redo | removeformat subscript superscript
-  - preview | image media | link
+  - preview | image media imageuploader | link
 plugins:
   - code
   - preview
   - media
   - image
   - link
+  - imageuploader
+language: ru
