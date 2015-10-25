@@ -219,6 +219,10 @@ GEM
       haml (>= 4.0.6, < 5.0)
       html2haml (>= 1.0.1)
       railties (>= 4.0.1)
+    hogan_assets (1.6.0)
+      execjs (>= 1.2.9)
+      sprockets (>= 2.0.3)
+      tilt (>= 1.3.3)
     html2haml (2.0.0)
       erubis (~> 2.7.0)
       haml (~> 4.0.0)
@@ -292,10 +296,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.2.1)
       sprockets-rails
-    rails-assets-Polymer--polymer (1.1.5)
-      rails-assets-webcomponentsjs (>= 0.7.2, < 0.8)
-    rails-assets-Sortable (1.4.1)
-      rails-assets-Polymer--polymer (~> 1.1.4)
+    rails-assets-Sortable (1.4.2)
     rails-assets-bootstrap (3.1.1)
       rails-assets-jquery (>= 1.9.0)
     rails-assets-bootstrap-tokenfield (0.12.1)
@@ -305,7 +306,6 @@ GEM
       rails-assets-jquery (>= 1.8)
     rails-assets-jquery (2.1.4)
     rails-assets-moment (2.10.6)
-    rails-assets-webcomponentsjs (0.7.15)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.6)
@@ -430,6 +430,7 @@ DEPENDENCIES
   faker
   fog
   haml-rails
+  hogan_assets
   jbuilder (~> 2.0)
   jquery-rails
   kaminari

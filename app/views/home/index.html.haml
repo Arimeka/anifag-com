@@ -1,12 +1,18 @@
 .row
-  .col-lg-9.col-md-9
+  .col-lg-9.col-md-9.articles
     .row.biggest-post.center-block
       = render partial: 'articles/article_main_big', object: @article_main_big, as: :article
     .row.posts-feed
       = render partial: 'articles/article_feed', collection: @articles_other, as: :article
-    .row.see-all
+    .row.more
       .col-sm-6.col-sm-offset-3
-        = link_to t('label.articles.more'), articles_path, class: 'btn btn-primary btn-lg btn-block'
+        = link_to t('label.articles.more'), root_path, class: 'btn btn-primary btn-lg btn-block', id: 'load-more'
+        .spinner.hide
+          .rect1
+          .rect2
+          .rect3
+          .rect4
+          .rect5
   %aside.col-lg-3.col-md-3
     = render 'shared/blocks/aside_video_block'
     = render 'shared/blocks/aside_gallery_block'

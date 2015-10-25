@@ -1,0 +1,25 @@
+<article class="row" itemscope="" itemtype="http://schema.org/NewsArticle">
+  <meta content="{{published_at_iso}}" itemprop="datePublished">
+  <div class="header">
+    <a href="/articles/{{param}}">
+    {{#image_share}}
+      <meta content="{{image_share}}" itemprop="image">
+    {{/image_share}}
+    {{#image}}
+      <div class="col-lg-5 col-md-5 col-sm-5 hidden-xs">
+        <img class="img-responsive" src="{{image}}" alt="" width="320" height="380">
+      </div>
+    {{/image}}
+    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 title">
+      <h1 itemprop="headline">{{title}}</h1>
+      <div class="info">
+        <strong>
+          <time datetime="{{published_at_iso}}" class="pull-right">{{published_at}}</time>
+        </strong>
+      </div>
+      <div class="clearfix"></div>
+      <div class="description" itemprop="description">{{description}}</div>
+    </div>
+    </a>
+  </div>
+</article>

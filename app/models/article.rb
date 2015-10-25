@@ -85,12 +85,29 @@ class Article < ActiveRecord::Base
     def main_big
       self.published.post.order(published_at: :desc).first
     end
+
+    def feed_hash(offset = 0, exclude_ids = [0])
+      self.feed(exclude_ids).offset(offset.to_i).limit(10).map(&:as_hash)
+    end
   end
   # ==================================================================================
   # Class methods
 
   # Instance methods
   # ==================================================================================
+  def as_hash
+    {
+      id: id,
+      param: to_param,
+      title: title,
+      description: seo_description,
+      published_at: published_at.strftime("%d-%m-%Y %H:%M"),
+      published_at_iso: published_at.to_formatted_s(:iso8601),
+      image: main_image.present? ? main_image.url('320x380') : nil,
+      image_share: main_image.present? ? main_image.url('640x430') : nil
+    }
+  end
+
   def to_param
     if seo_slug.present?
       "#{id}-#{seo_slug}"

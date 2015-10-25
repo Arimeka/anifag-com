@@ -19,7 +19,10 @@
 //= require videojs-youtube/vjs.youtube.js
 //= require galleries
 //= require bootstrap
+//= require hogan.js
+//= require_tree ./templates
 //= require share
+//= require home
 //= require videos
 //= require articles
 //= require_self

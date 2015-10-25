@@ -19,46 +19,50 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'paperclip', '~> 4.3'
 gem 'aws-sdk', '~> 1.6'
 
-# CSS
-gem 'sass-rails', '~> 5.0'
-gem 'twitter-bootstrap-rails'
-gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
-gem 'autoprefixer-rails'
-
-# Wysiwyg
-gem 'tinymce-rails'
-
-# JS
-# == Server-side JS execution
-gem 'therubyracer'
-# == JS  compressor & minification tools
-gem 'uglifier', '>= 1.3.0'
-# == CoffeeScript
-gem 'coffee-rails', '~> 4.1.0'
-# == JQuery
-gem 'jquery-rails'
-# JSON API builder
-gem 'jbuilder', '~> 2.0'
-# Drug'n'Drop Upload
-gem 'dropzonejs-rails'
-
-gem 'photoswipe-rails'
-gem 'videojs_rails'
-gem 'twitter-typeahead-rails'
-
-source 'https://rails-assets.org' do
-  gem 'rails-assets-moment'
-  gem 'rails-assets-bootstrap-tokenfield'
-  gem 'rails-assets-Sortable'
-  gem 'rails-assets-fotorama'
-end
-
 # HTML
 # == Templates
 gem 'haml-rails'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+
+group :development, :assets do
+  # CSS
+  gem 'sass-rails', '~> 5.0'
+  gem 'twitter-bootstrap-rails'
+  gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
+  gem 'autoprefixer-rails'
+
+  # Wysiwyg
+  gem 'tinymce-rails'
+
+  # JS
+  # == Server-side JS execution
+  gem 'therubyracer'
+  # == JS  compressor & minification tools
+  gem 'uglifier', '>= 1.3.0'
+  # == CoffeeScript
+  gem 'coffee-rails', '~> 4.1.0'
+  # == JQuery
+  gem 'jquery-rails'
+  # JSON API builder
+  gem 'jbuilder', '~> 2.0'
+  # Drug'n'Drop Upload
+  gem 'dropzonejs-rails'
+  # Templates
+  gem 'hogan_assets'
+
+  gem 'photoswipe-rails'
+  gem 'videojs_rails'
+  gem 'twitter-typeahead-rails'
+
+  source 'https://rails-assets.org' do
+    gem 'rails-assets-moment'
+    gem 'rails-assets-bootstrap-tokenfield'
+    gem 'rails-assets-Sortable'
+    gem 'rails-assets-fotorama'
+  end
+end
 
 group :development do
   gem 'capistrano', '~> 3.0'
