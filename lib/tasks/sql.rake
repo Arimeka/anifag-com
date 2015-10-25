@@ -137,6 +137,8 @@ namespace :sql do
       category.save
     end
 
+    Article.update_all("seo_description = replace(seo_description, ' ', ' ')")
+
     Article.update_all("content = replace(content, 'http://1.bp.blogspot.com', 'https://lh1.googleusercontent.com')")
     Article.update_all("content = replace(content, 'http://2.bp.blogspot.com', 'https://lh2.googleusercontent.com')")
     Article.update_all("content = replace(content, 'http://3.bp.blogspot.com', 'https://lh3.googleusercontent.com')")

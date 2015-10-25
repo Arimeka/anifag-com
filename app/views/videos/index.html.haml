@@ -3,7 +3,7 @@
 .row
   .col-lg-9
     .row.videos-feed
-      = render partial: 'articles/article_small', collection: @articles, as: :article
+      = render partial: 'articles/article_feed', collection: @articles, as: :article
     = render 'shared/blocks/pagination'
   %aside.col-lg-3
     = render 'shared/blocks/aside_post_block'

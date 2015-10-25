@@ -1,5 +1,0 @@
-%article.col-lg-6.col-sm-6.col-xs-12
-  = link_to article do
-    - if article.main_image.present?
-      = image_tag article.main_image.url('378x249'), class: 'img-responsive', size: '378x249'
-    %h3.title= article.title

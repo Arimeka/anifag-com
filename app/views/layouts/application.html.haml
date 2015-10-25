@@ -27,6 +27,13 @@
     %meta{property: 'og:url', content: get_current_url }
     %meta{property: 'og:description', content: content_for?(:description) ? (yield :description) : 'Новости аниме и манги.'}
 
+    - if content_for? :og_published_at
+      %meta{property: 'og:article:published_time', content: yield(:og_published_at)}
+    - if content_for? :og_section
+      %meta{property: 'og:article:section', content: yield(:og_section)}
+    - if content_for? :og_tags
+      = yield :og_tags
+
     %meta{property: 'og:locale:locale', content: 'ru_ru'}
 
     %link{rel: 'image_src', href: content_for?(:image) ? (yield :image) : image_url('logo-share-default.png')}
@@ -82,10 +89,10 @@
             .row
               .col-lg-12
                 .navbar.navbar-footer
-                  .col-lg-2.col-sm-3.col-xs-8
+                  .col-lg-2.col-sm-3.col-xs-7
                     = link_to root_path do
                       .logo-footer Anime Fag
-                  .col-lg-3.col-sm-3.col-xs-4
+                  .col-lg-3.col-sm-3.col-xs-5
                     %ul.list-unstyled
                       %li= link_to t('activerecord.models.article.title'), articles_path
                       %li= link_to t('activerecord.models.gallery.title'), galleries_path

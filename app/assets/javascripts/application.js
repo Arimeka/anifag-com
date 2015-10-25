@@ -19,5 +19,7 @@
 //= require videojs-youtube/vjs.youtube.js
 //= require galleries
 //= require bootstrap
+//= require share
 //= require videos
+//= require articles
 //= require_self

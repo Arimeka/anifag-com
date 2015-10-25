@@ -1,0 +1,15 @@
+%article.row{itemscope: true, itemtype: 'http://schema.org/NewsArticle'}
+  %meta{itemprop: 'datePublished', content: article.published_at.to_formatted_s(:iso8601)}
+  .header
+    = link_to article do
+      - if article.main_image.present?
+        %meta{itemprop: 'image', content: article.main_image.url('640x430')}
+        .col-lg-5.col-md-5.col-sm-5.hidden-xs= image_tag article.main_image.url('320x380'), class: 'img-responsive' , size: '320x380'
+      .col-lg-7.col-md-7.col-sm-7.col-xs-12.title
+        %h1{itemprop: 'headline'}= article.title
+        .info
+          %strong
+            = time_tag article.published_at, article.published_at.strftime("%d-%m-%Y %H:%M"), class: 'pull-right'
+        .clearfix
+        .description{itemprop: 'description'}= article.seo_description
+
