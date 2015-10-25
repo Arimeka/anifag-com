@@ -1,5 +1,8 @@
-%article.col-lg-12
+%article.col-lg-12{itemscope: true, itemtype: 'http://schema.org/NewsArticle'}
+  %meta{itemprop: 'datePublished', content: article.published_at.to_formatted_s(:iso8601)}
+  %meta{itemprop: 'description', content: article.seo_description}
   = link_to article do
     - if article.main_image.present?
+      %meta{itemprop: 'image', content: article.main_image.url('640x430')}
       = image_tag article.main_image.url('780x564'), class: 'img-responsive', size: '780x564'
-    %h2.title= article.title
+    %h2.title{itemprop: 'headline'}= article.title

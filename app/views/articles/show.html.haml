@@ -1,13 +1,26 @@
 - content_for :title, "#{@article.title} - Anime Fag"
 - content_for :description, @article.seo_description
 - content_for :keywords, @article.seo_keywords
+- if @article.main_image.present?
+  - content_for :image, @article.main_image.url('640x430')
+
+- content_for :type, 'article'
+- content_for :og_published_at, @article.published_at.to_formatted_s(:iso8601)
+- if @article.category.present?
+  - content_for :og_section, @article.category.name
+- if @article.tag_list.present?
+  - content_for :og_tags do
+    - @article.tag_list.each do |tag|
+      %meta{property: 'og:article:tag', content: tag}
 
 .row
   .col-lg-9.col-md-9
     .row
-      %article.content
-        - unless @article.is_gallery?
-          %h1.title= @article.title
+      %article.content{itemscope: true, itemtype: 'http://schema.org/NewsArticle'}
+        %meta{itemprop: 'datePublished', content: @article.published_at.to_formatted_s(:iso8601)}
+        - if @article.main_image.present?
+          %meta{itemprop: 'image', content: @article.main_image.url('640x430')}
+        %h1.title{itemprop: 'headline'}= @article.title
         - if @article.is_video?
           .main-video= @article.embed_video.html_safe
         - elsif @article.is_gallery?
@@ -32,7 +45,7 @@
                   = link_to "https://www.facebook.com/sharer/sharer.php?u=#{article_url(@article)}", target: '_blank', class: 'js-social-share', data: {type: 'fb'} do
                     %i.fb
                 %li
-                  = link_to "http://twitter.com/share??text=#{@article.title}&url=#{article_url(@article)}", target: '_blank', class: 'js-social-share', data: {type: 'tw'} do
+                  = link_to "http://twitter.com/share?text=#{URI.encode(@article.title)}&url=#{article_url(@article)}", target: '_blank', class: 'js-social-share', data: {type: 'tw'} do
                     %i.tw
                 %li
                   = link_to "https://plus.google.com/share?url=#{article_url(@article)}", target: '_blank', class: 'js-social-share', data: {type: 'gg'} do
@@ -48,12 +61,12 @@
                   = link_to "https://www.facebook.com/sharer/sharer.php?u=#{article_url(@article)}", target: '_blank', class: 'js-social-share', data: {type: 'fb'} do
                     %i.fb.small
                 %li
-                  = link_to "http://twitter.com/share??text=#{@article.title}&url=#{article_url(@article)}", target: '_blank', class: 'js-social-share', data: {type: 'tw'} do
+                  = link_to "http://twitter.com/share?text=#{URI.encode(@article.title)}&url=#{article_url(@article)}", target: '_blank', class: 'js-social-share', data: {type: 'tw'} do
                     %i.tw.small
                 %li
                   = link_to "https://plus.google.com/share?url=#{article_url(@article)}", target: '_blank', class: 'js-social-share', data: {type: 'gg'} do
                     %i.gg.small
-          .col-lg-9.col-md-9.col-sm-12.col-xs-12
+          .col-lg-9.col-md-9.col-sm-12.col-xs-12{itemprop: 'articleBody'}
             = @article.content.html_safe
     - if @same_articles.present?
       .row.same-posts-block

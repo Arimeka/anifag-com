@@ -27,6 +27,13 @@
     %meta{property: 'og:url', content: get_current_url }
     %meta{property: 'og:description', content: content_for?(:description) ? (yield :description) : 'Новости аниме и манги.'}
 
+    - if content_for? :og_published_at
+      %meta{property: 'og:article:published_time', content: yield(:og_published_at)}
+    - if content_for? :og_section
+      %meta{property: 'og:article:section', content: yield(:og_section)}
+    - if content_for? :og_tags
+      = yield :og_tags
+
     %meta{property: 'og:locale:locale', content: 'ru_ru'}
 
     %link{rel: 'image_src', href: content_for?(:image) ? (yield :image) : image_url('logo-share-default.png')}
