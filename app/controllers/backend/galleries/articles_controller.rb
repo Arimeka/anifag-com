@@ -71,6 +71,7 @@ class Backend::Galleries::ArticlesController < BackendController
                                     :content,
                                     :is_published,
                                     :is_gallery,
+                                    :is_big,
                                     :source,
                                     :source_name,
                                     :seo_slug,

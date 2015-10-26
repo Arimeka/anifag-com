@@ -18,6 +18,7 @@
 #  updated_at      :datetime         not null
 #  embed_video     :string           default(""), not null    # Код встраиваемого видео
 #  source_name     :string           default(""), not null    # Название источника публикации
+#  is_big          :boolean          default(FALSE), not null # Большой блок
 #
 
 FactoryGirl.define do

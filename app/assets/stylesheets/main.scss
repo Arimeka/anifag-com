@@ -230,8 +230,44 @@ aside, .same-posts-block {
     border-bottom: 1px solid rgba(128, 128, 128, 0.27);
     padding-bottom: 20px;
 
+    background: no-repeat center center;
+    background-attachment: scroll;
+    background-size: cover;
+
     &:last-child {
       border-bottom: none;
+    }
+
+    &.big {
+      position: relative;
+      .overlay {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        background-color: rgba(0, 0, 0, .5);
+      }
+      .post-preview {
+        position: relative;
+
+        time, .post-title, .post-subtitle {
+          color: #fff;
+        }
+      }
+
+      @media only screen and (min-width: 768px) {
+        .post-preview {
+          padding: 80px 30px;
+        }
+      }
+
+      @media only screen and (min-width: 1200px) {
+        .post-preview {
+          padding: 140px 30px;
+        }
+      }
     }
 
     a {

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151025182341) do
+ActiveRecord::Schema.define(version: 20151026151639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20151025182341) do
     t.datetime "updated_at",                      null: false
     t.string   "embed_video",     default: "",    null: false, comment: "Код встраиваемого видео"
     t.string   "source_name",     default: "",    null: false, comment: "Название источника публикации"
+    t.boolean  "is_big",          default: false, null: false, comment: "Большой блок"
   end
 
   create_table "categories", force: :cascade, comment: "Категории" do |t|

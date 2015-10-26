@@ -63,6 +63,7 @@ ru:
         seo_description:  Описание
         source:           Источник
         source_name:      Название источника
+        is_big:           Большой блок
       article:
         <<: *defaults
         embed_video:      Код вставки видео

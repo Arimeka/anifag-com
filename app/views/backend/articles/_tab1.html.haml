@@ -20,6 +20,10 @@
       = form.label :is_published do
         = form.check_box :is_published
         = t('activerecord.attributes.article.is_published')
+    .checkbox
+      = form.label :is_big do
+        = form.check_box :is_big
+        = t('activerecord.attributes.article.is_big')
 .row
   .col-sm-6
     .form-group

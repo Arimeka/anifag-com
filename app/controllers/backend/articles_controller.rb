@@ -65,6 +65,7 @@ class Backend::ArticlesController < BackendController
     params.require(:article).permit(:title,
                                     :content,
                                     :is_published,
+                                    :is_big,
                                     :source,
                                     :source_name,
                                     :seo_slug,
