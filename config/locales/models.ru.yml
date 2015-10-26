@@ -60,8 +60,9 @@ ru:
         main_image:       Главное изображение
         seo_slug:         Канонический урл
         seo_keywords:     Ключевые слова
-        seo_description:  SEO-описание
+        seo_description:  Описание
         source:           Источник
+        source_name:      Название источника
       article:
         <<: *defaults
         embed_video:      Код вставки видео

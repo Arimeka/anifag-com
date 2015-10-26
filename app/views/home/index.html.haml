@@ -1,8 +1,6 @@
 .row
   .col-lg-9.col-md-9.articles
-    .row.biggest-post.center-block
-      = render partial: 'articles/article_main_big', object: @article_main_big, as: :article
-    .row.posts-feed
+    .posts-feed
       = render partial: 'articles/article_feed', collection: @articles_other, as: :article
     .row.more
       .col-sm-6.col-sm-offset-3

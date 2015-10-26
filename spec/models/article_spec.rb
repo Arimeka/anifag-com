@@ -17,6 +17,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  embed_video     :string           default(""), not null    # Код встраиваемого видео
+#  source_name     :string           default(""), not null    # Название источника публикации
 #
 
 require 'rails_helper'

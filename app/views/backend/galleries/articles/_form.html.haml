@@ -20,5 +20,5 @@
           - unless @article.new_record?
             = link_to t('form.delete'), backend_galleries_article_path(@article), method: :delete, data: { confirm: t('form.sure?') }, class: 'btn btn-danger pull-right'
 = render 'dropzone'
-= tinymce
+= tinymce content_css: asset_path('backend/content.css')
 = render 'backend/articles/upload_image'

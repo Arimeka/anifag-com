@@ -5,4 +5,7 @@
     - if article.main_image.present?
       %meta{itemprop: 'image', content: article.main_image.url('640x430')}
       = image_tag article.main_image.url('250x211'), class: 'img-responsive', size: '250x211'
+    - else
+      %meta{itemprop: 'image', content: image_url('logo-share-default.png')}
+      = image_tag image_url('dummy/250x211.png'), class: 'img-responsive', size: '250x211'
     %h4.title{itemprop: 'headline'}= article.title

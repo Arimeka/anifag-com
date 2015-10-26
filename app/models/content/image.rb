@@ -35,6 +35,7 @@ class Content::Image < ActiveRecord::Base
 
   # Validations
   # ==================================================================================
+  validates :title, :description, length: { maximum: 225 }
   validates_attachment :file, content_type: { content_type: /\Aimage\/.*\Z/ },
                               size: { in: 0..4.megabytes }
   # ==================================================================================

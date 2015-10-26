@@ -19,4 +19,5 @@ Rails.application.config.assets.precompile += %w( normalize.css
                                                   vjs.woff
                                                   backend.css
                                                   backend.js
+                                                  backend/content.css
                                                 )

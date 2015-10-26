@@ -138,6 +138,8 @@ namespace :sql do
     end
 
     Article.update_all("seo_description = replace(seo_description, ' ', ' ')")
+    Article.update_all("content = replace(content, ' ', ' ')")
+    Article.update_all("content = replace(content, 'style=\"text-align: justify;\"', '')")
 
     Article.update_all("content = replace(content, 'http://1.bp.blogspot.com', 'https://lh1.googleusercontent.com')")
     Article.update_all("content = replace(content, 'http://2.bp.blogspot.com', 'https://lh2.googleusercontent.com')")
@@ -157,6 +159,20 @@ namespace :sql do
       article.seo_description = description
       article.seo_keywords = article.tag_list if article.seo_keywords.blank?
       article.category = article.categories.first
+      article.save
+    end
+
+    Article.where("source != ''").find_each do |article|
+      uri = URI.parse(article.source)
+      name =  case uri.host
+              when 'www.animenewsnetwork.com'
+                'ANN'
+              when 'www.moetron.com'
+                'Moetron'
+              when 'www.play-asia.com'
+                'play-asia.com'
+              end
+      article.source_name = name
       article.save
     end
   end

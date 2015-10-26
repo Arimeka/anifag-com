@@ -39,6 +39,8 @@ class GalleryFile < ActiveRecord::Base
   # Validations
   # ==================================================================================
   validates :article_id, :placement_index, presence: true
+  validates :title, :description, length: { maximum: 225 }
+
   validates_attachment :file, content_type: { content_type: /\Aimage\/.*\Z/ },
                               size: { in: 0..4.megabytes }
   # ==================================================================================

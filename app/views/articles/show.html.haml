@@ -35,6 +35,11 @@
         .body
           .info.col-lg-3.col-md-3.hidden-sm.hidden-xs
             = time_tag @article.published_at, @article.published_at.strftime("%d-%m-%Y %H:%M")
+            - if @article.source.present?
+              .source.text-uppercase
+                = link_to @article.source, target: '_blank' do
+                  %i.fa.fa-external-link
+                  = @article.source_name
             .sharing
               %ul.list-unstyled
                 %li Поделиться

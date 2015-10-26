@@ -1,0 +1,30 @@
+html {
+  background: #F2F2F2;
+}
+
+body {
+  @import "bootstrap_and_overrides";
+
+  background: #FFFFFF;
+  border-left: 1px solid #979797;
+  border-right: 1px solid #979797;
+
+  margin: 0 auto;
+  padding: 30px;
+
+  width: 620px;
+  height: 100%;
+  min-height: 100%;
+
+  font-family: PTSans-Regular, Helvetica, sans-serif;
+  font-size: 18px;
+  color: #4A4A4A;
+  line-height: 23px;
+
+  img {
+    margin: 0 auto;
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+}

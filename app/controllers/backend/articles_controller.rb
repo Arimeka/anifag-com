@@ -66,6 +66,7 @@ class Backend::ArticlesController < BackendController
                                     :content,
                                     :is_published,
                                     :source,
+                                    :source_name,
                                     :seo_slug,
                                     :seo_keywords,
                                     :seo_description,

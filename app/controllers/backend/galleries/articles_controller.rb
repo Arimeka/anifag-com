@@ -72,6 +72,7 @@ class Backend::Galleries::ArticlesController < BackendController
                                     :is_published,
                                     :is_gallery,
                                     :source,
+                                    :source_name,
                                     :seo_slug,
                                     :seo_keywords,
                                     :seo_description,

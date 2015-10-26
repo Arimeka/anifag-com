@@ -10,8 +10,3 @@
       .col-sm-8
         = form.text_field :seo_keywords, class: 'form-control tags-tokenizer', data: {taggable: 'articles'}
         %span.help-block= t('label.form.adding_by_enter_or_comma')
-.row
-  .col-sm-6
-    .form-group
-      = form.label :seo_description, class: 'col-sm-4 control-label'
-      .col-sm-8= form.text_area :seo_description, rows: 10, cols: 25, class: 'form-control'

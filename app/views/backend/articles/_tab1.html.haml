@@ -21,10 +21,18 @@
         = form.check_box :is_published
         = t('activerecord.attributes.article.is_published')
 .row
-  .col-sm-8
+  .col-sm-6
     .form-group
-      = form.label :source, class: 'col-sm-3 control-label'
+      = form.label :source_name, class: 'col-sm-4 control-label'
+      .col-sm-5= form.text_field :source_name, class: 'form-control'
+    .form-group
+      = form.label :source, class: 'col-sm-4 control-label'
       .col-sm-8= form.text_field :source, class: 'form-control'
+.row
+  .col-sm-6
+    .form-group
+      = form.label :seo_description, class: 'col-sm-4 control-label'
+      .col-sm-8= form.text_area :seo_description, rows: 10, cols: 25, class: 'form-control'
 .row
   .col-sm-12
     .form-group

@@ -189,7 +189,6 @@ body {
       color: #2B2B2B;
       margin: 0 auto;
       text-align: center;
-      text-shadow: 0px 1px 4px rgba(0,0,0,0.50);
 
       &:hover {
         color: #4A6D8A;
@@ -198,6 +197,18 @@ body {
       img {
         margin: 0 auto;
       }
+
+      h2 {
+        small {
+          color: black;
+        }
+      }
+    }
+
+    .post-meta {
+      color: gray;
+      font-size: 16px;
+      font-style: italic;
     }
   }
 }

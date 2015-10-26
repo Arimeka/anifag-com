@@ -17,6 +17,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  embed_video     :string           default(""), not null    # Код встраиваемого видео
+#  source_name     :string           default(""), not null    # Название источника публикации
 #
 
 class Article < ActiveRecord::Base
@@ -24,7 +25,10 @@ class Article < ActiveRecord::Base
 
   # Validations
   # ==================================================================================
-  validates :title, :content, :published_at, presence: true
+  validates :title, :content, :seo_description, :published_at, presence: true
+  validates :title, :seo_description, :source,
+              :source_name, :seo_keywords, :embed_video,
+              :seo_slug, length: { maximum: 225 }
   # ==================================================================================
   # Validations
 
@@ -48,7 +52,7 @@ class Article < ActiveRecord::Base
                           published
                           .where('id NOT IN (?)', exclude_ids)
                           .order(published_at: :desc)
-                          .limit(9)
+                          .limit(10)
                         }
 
   scope :feed,      -> (exclude_ids = [0]) { includes(:main_image).others(exclude_ids) }
@@ -75,6 +79,8 @@ class Article < ActiveRecord::Base
 
   # Callbacks
   # ==================================================================================
+  around_create :fix_create_article_with_category_articles
+
   before_save :set_seo_keywords, if: 'seo_keywords.blank?'
   # ==================================================================================
   # Callbacks
@@ -82,10 +88,6 @@ class Article < ActiveRecord::Base
   # Class methods
   # ==================================================================================
   class << self
-    def main_big
-      self.published.post.order(published_at: :desc).first
-    end
-
     def feed_hash(offset = 0, exclude_ids = [0])
       self.feed(exclude_ids).offset(offset.to_i).limit(10).map(&:as_hash)
     end
@@ -146,6 +148,16 @@ class Article < ActiveRecord::Base
   def set_seo_keywords
     seo_keywords = self.tag_list
   end
+
+  # FIXME Remove when https://github.com/rails/rails/issues/21096 will be fixed
+  def fix_create_article_with_category_articles
+    cats = category_articles.to_a
+    category_articles.clear
+    return false unless yield
+    self.category_articles = cats
+    save
+  end
+
   # ==================================================================================
   # Private methods
 end
