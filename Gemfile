@@ -19,6 +19,9 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'paperclip', '~> 4.3'
 gem 'aws-sdk', '~> 1.6'
 
+# Auth
+gem 'devise'
+
 # HTML
 # == Templates
 gem 'haml-rails'

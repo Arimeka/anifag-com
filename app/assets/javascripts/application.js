@@ -15,6 +15,7 @@
 //= require twitter/bootstrap/collapse
 //= require twitter/bootstrap/tooltip
 //= require twitter/bootstrap/popover
+//= require twitter/bootstrap/alert
 //= require video
 //= require videojs-youtube/vjs.youtube.js
 //= require galleries

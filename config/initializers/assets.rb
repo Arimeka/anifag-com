@@ -20,4 +20,6 @@ Rails.application.config.assets.precompile += %w( normalize.css
                                                   backend.css
                                                   backend.js
                                                   backend/content.css
+                                                  devise.css
+                                                  devise.js
                                                 )

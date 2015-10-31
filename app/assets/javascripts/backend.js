@@ -19,6 +19,7 @@
 //= require bootstrap
 //= require bootstrap-tokenfield
 //= require twitter/typeahead
+//= require twitter/bootstrap/alert
 //= require dropzone
 //= require Sortable/Sortable
 

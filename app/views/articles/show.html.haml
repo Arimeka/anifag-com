@@ -34,7 +34,7 @@
           .main-image= image_tag @article.main_image.url('x564'), class: 'img-responsive'
         .body
           .info.col-lg-3.col-md-3.hidden-sm.hidden-xs
-            = time_tag @article.published_at, @article.published_at.strftime("%d-%m-%Y %H:%M")
+            = time_tag @article.published_at, @article.published_at.strftime("%d-%m-%Y %H:%M"), class: 'text-muted'
             - if @article.source.present?
               .source.text-uppercase
                 = link_to @article.source, target: '_blank' do
@@ -56,7 +56,7 @@
                   = link_to "https://plus.google.com/share?url=#{article_url(@article)}", target: '_blank', class: 'js-social-share', data: {type: 'gg'} do
                     %i.gg
           .info.col-sm-12.col-xs-12.visible-sm-inline-block.visible-xs-inline-block
-            = time_tag @article.published_at, @article.published_at.strftime("%d-%m-%Y %H:%M"), class: 'pull-right small'
+            = time_tag @article.published_at, @article.published_at.strftime("%d-%m-%Y %H:%M"), class: 'pull-right small text-muted'
             .sharing
               %ul.list-inline
                 %li

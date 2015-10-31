@@ -23,8 +23,7 @@
             = image_tag article.main_image.url('320x380'), class: 'img-responsive' , size: '320x380'
         %h1.post-title{itemprop: 'headline'}
           = article.title
-        %h2
-          %small.post-subtitle{itemprop: 'description'}
-            = article.seo_description
+        .post-subtitle.lead{itemprop: 'description'}
+          = article.seo_description
       %p.post-meta
         = time_tag article.published_at, article.published_at.strftime("%d-%m-%Y %H:%M"), class: 'pull-right'

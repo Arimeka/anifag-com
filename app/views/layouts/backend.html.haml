@@ -41,7 +41,7 @@
                 %i.fa.fa-cog
                 Настройки
             %li
-              = link_to '#' do
+              = link_to destroy_admin_session_path, method: :delete do
                 %i.fa.fa-sign-out
                 = t('activerecord.models.admin.labels.logout')
           %form.navbar-form.navbar-right
