@@ -1,0 +1,15 @@
+- content_for :title, "#{t('activerecord.models.banner.labels.index')} #{t('activerecord.models.banner.many')} - Anime Fag"
+
+= render 'subnav'
+
+%h1.page-header= "#{t('activerecord.models.banner.labels.index')} #{t('activerecord.models.banner.many')}"
+.table-responsive
+  %table.table.table-striped
+    %thead
+      %tr
+        %th #
+        %th= t('activerecord.attributes.banner.title')
+        %th= t('activerecord.attributes.banner.created_at')
+        %th
+    %tbody= render @banners
+= paginate @banners

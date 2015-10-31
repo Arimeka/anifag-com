@@ -12,10 +12,13 @@ Rails.application.routes.draw do
     collection { get 'page/:page', to: 'videos#index_page' }
   end
 
+  get '/banners/:selector', to: 'banners#show'
+
   namespace :backend do
     root 'dashboard#index'
 
     resources :articles, except: :show
+    resources :banners, except: :show
 
     namespace :content do
       resources :images, only: [:index, :create, :update, :destroy]

@@ -73,6 +73,9 @@
                     %i.gg.small
           .col-lg-9.col-md-9.col-sm-12.col-xs-12{itemprop: 'articleBody'}
             = @article.content.html_safe
+    .row
+      .col-md-12.hidden-sm.hidden-xs
+        .js-banner#article-body-footer-banner{data: {max_width: '290px'}}
     - if @same_articles.present?
       .row.same-posts-block
         .h2 Похожие записи
@@ -80,6 +83,9 @@
           = render partial: 'articles/article_small', collection: @same_articles, as: :article
 
   %aside.col-lg-3.col-md-3
+    .row
+      .col-md-12
+        .js-banner#article-aside-banner-top{data: {max_width: '290px'}}
     - if @article.is_video?
       = render 'shared/blocks/aside_post_block'
       = render 'shared/blocks/aside_gallery_block'

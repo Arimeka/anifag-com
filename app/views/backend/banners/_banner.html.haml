@@ -1,0 +1,9 @@
+%tr
+  %td= banner.id
+  %td= banner.title
+  %td= banner.created_at
+  %td
+    = link_to edit_backend_banner_path(banner), class: 'btn btn-primary' do
+      %i.fa.fa-pencil
+    = link_to backend_banner_path(banner), method: :delete, data: { confirm: t('form.sure?') }, class: 'btn btn-danger' do
+      %i.fa.fa-trash-o

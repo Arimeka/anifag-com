@@ -307,3 +307,10 @@ aside {
     padding-bottom: 30px;
   }
 }
+
+.js-banner {
+  iframe, img {
+    display: block;
+    margin: 0 auto;
+  }
+}

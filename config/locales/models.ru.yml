@@ -45,6 +45,18 @@ ru:
           new:      Создать
           edit:     Редактировать
           destroy:  Удалить
+      banner:
+        title:      Баннеры
+        one:        Баннер
+        few:        Баннера
+        many:       Баннеров
+        other:      Баннеры
+        accusative: Баннера
+        labels:
+          index:    Список
+          new:      Создать
+          edit:     Редактировать
+          destroy:  Удалить
       admin:
         labels:
           logout: Выйти
@@ -73,3 +85,8 @@ ru:
       gallery_file:
         title:            Название файла
         description:      Описание файла
+      banner:
+        title:                Название
+        content:              Содержимое
+        created_at:           Создано
+        banner_placement_ids: Позиции

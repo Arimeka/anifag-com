@@ -26,4 +26,5 @@
 //= require home
 //= require videos
 //= require articles
+//= require banners
 //= require_self

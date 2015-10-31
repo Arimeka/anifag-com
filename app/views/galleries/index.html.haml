@@ -5,7 +5,13 @@
     .galleries-feed
       = render partial: 'articles/article_feed', collection: @articles, as: :article
     = render 'shared/blocks/pagination'
+    .row
+      .col-md-12.hidden-sm.hidden-xs
+        .js-banner#galleries-feed-footer-banner{data: {max_width: '840px'}}
   %aside.col-lg-3.col-md-3
+    .row
+      .col-md-12
+        .js-banner#galleries-aside-banner-top{data: {max_width: '290px'}}
     = render 'shared/blocks/aside_post_block'
     = render 'shared/blocks/aside_video_block'
 

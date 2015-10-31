@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151026162457) do
+ActiveRecord::Schema.define(version: 20151031152015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,27 @@ ActiveRecord::Schema.define(version: 20151026162457) do
     t.string   "embed_video",     default: "",    null: false, comment: "Код встраиваемого видео"
     t.string   "source_name",     default: "",    null: false, comment: "Название источника публикации"
     t.boolean  "is_big",          default: false, null: false, comment: "Большой блок"
+  end
+
+  create_table "banner_placement_banners", force: :cascade, comment: "Связующая таблица баннеров и плейсментов" do |t|
+    t.integer  "banner_id",           null: false, comment: "Внешний ключ для связи с баннером"
+    t.integer  "banner_placement_id", null: false, comment: "Внешний ключ для связи с плейсментом"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  create_table "banner_placements", force: :cascade, comment: "Места расположения баннеров" do |t|
+    t.string   "title",      default: "", null: false, comment: "Название расположения"
+    t.string   "selector",   default: "", null: false, comment: "Селектор расположения в коде страницы"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "banners", force: :cascade, comment: "Рекламные баннеры" do |t|
+    t.string   "title",                   default: "", null: false, comment: "Название баннера"
+    t.string   "content",    limit: 1000, default: "", null: false, comment: "Содержимое баннера"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   create_table "categories", force: :cascade, comment: "Категории" do |t|
