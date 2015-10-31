@@ -12,7 +12,11 @@ Rails.application.routes.draw do
     collection { get 'page/:page', to: 'videos#index_page' }
   end
 
-  get '/banners/:selector', to: 'banners#show'
+  constraints ->(r){r.xhr?} do
+    get '/banners/:selector', to: 'banners#show'
+  end
+
+  get '/rss/feed', to: 'rss#feed'
 
   namespace :backend do
     root 'dashboard#index'
