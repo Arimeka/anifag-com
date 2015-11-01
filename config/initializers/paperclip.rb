@@ -34,7 +34,11 @@ module Paperclip
 
     def custom_basename attachment, style_name, gravity = 'north'
       file = attachment.original_filename.gsub(/#{Regexp.escape(File.extname(attachment.original_filename))}\Z/, "")
-      "gr/#{gravity}/s/#{style_name}/#{file}"
+      if style_name == :original
+        file
+      else
+        "gr/#{gravity}/s/#{style_name}/#{file}"
+      end
     end
   end
 end
