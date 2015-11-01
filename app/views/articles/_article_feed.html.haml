@@ -1,29 +1,30 @@
-- if article.is_big? && article.main_image.present?
-  %article.row.col-lg-12.col-md-12.big{itemscope: true, itemtype: 'http://schema.org/NewsArticle', style: "background-image: url('#{article.main_image.url('847x410')}')"}
-    %meta{itemprop: 'datePublished', content: article.published_at.to_formatted_s(:iso8601)}
-    %meta{itemprop: 'image', content: article.main_image.url('640x430')}
-    .overlay
-    .post-preview
-      = link_to article do
-        %h1.post-title{itemprop: 'headline'}
-          = article.title
-        %h2
-          %small.post-subtitle{itemprop: 'description'}
+- cache "#{article.id}/feed" do
+  - if article.is_big? && article.main_image.present?
+    %article.row.col-lg-12.col-md-12.big{itemscope: true, itemtype: 'http://schema.org/NewsArticle', style: "background-image: url('#{article.main_image.url('847x410')}')"}
+      %meta{itemprop: 'datePublished', content: article.published_at.to_formatted_s(:iso8601)}
+      %meta{itemprop: 'image', content: article.main_image.url('640x430')}
+      .overlay
+      .post-preview
+        = link_to article do
+          %h1.post-title{itemprop: 'headline'}
+            = article.title
+          %h2
+            %small.post-subtitle{itemprop: 'description'}
+              = article.seo_description
+        %p.post-meta
+          = time_tag article.published_at, article.published_at.strftime("%d-%m-%Y %H:%M"), class: 'pull-right'
+  - else
+    %article.row.col-lg-12.col-md-12{itemscope: true, itemtype: 'http://schema.org/NewsArticle'}
+      %meta{itemprop: 'datePublished', content: article.published_at.to_formatted_s(:iso8601)}
+      .post-preview
+        = link_to article do
+          - if article.main_image.present?
+            %meta{itemprop: 'image', content: article.main_image.url('640x430')}
+            .col-lg-5.col-md-5.col-sm-5.hidden-xs
+              = image_tag article.main_image.url('320x380'), class: 'img-responsive' , size: '320x380'
+          %h1.post-title{itemprop: 'headline'}
+            = article.title
+          .post-subtitle.lead{itemprop: 'description'}
             = article.seo_description
-      %p.post-meta
-        = time_tag article.published_at, article.published_at.strftime("%d-%m-%Y %H:%M"), class: 'pull-right'
-- else
-  %article.row.col-lg-12.col-md-12{itemscope: true, itemtype: 'http://schema.org/NewsArticle'}
-    %meta{itemprop: 'datePublished', content: article.published_at.to_formatted_s(:iso8601)}
-    .post-preview
-      = link_to article do
-        - if article.main_image.present?
-          %meta{itemprop: 'image', content: article.main_image.url('640x430')}
-          .col-lg-5.col-md-5.col-sm-5.hidden-xs
-            = image_tag article.main_image.url('320x380'), class: 'img-responsive' , size: '320x380'
-        %h1.post-title{itemprop: 'headline'}
-          = article.title
-        .post-subtitle.lead{itemprop: 'description'}
-          = article.seo_description
-      %p.post-meta
-        = time_tag article.published_at, article.published_at.strftime("%d-%m-%Y %H:%M"), class: 'pull-right'
+        %p.post-meta
+          = time_tag article.published_at, article.published_at.strftime("%d-%m-%Y %H:%M"), class: 'pull-right'

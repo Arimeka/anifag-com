@@ -8,6 +8,8 @@ gem 'rails', '4.2.1'
 # DB adapter
 gem 'pg'
 gem 'migration_comments'
+gem 'redis'
+gem 'redis-rails'
 
 # Pagination
 gem 'kaminari'

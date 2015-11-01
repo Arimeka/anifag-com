@@ -18,6 +18,7 @@ class Backend::Videos::ArticlesController < BackendController
       else
         redirect_to edit_backend_videos_article_url(@article)
       end
+      expire_cache(@article)
     else
       @errors = @article.errors.full_messages
       prepare_post
@@ -41,6 +42,7 @@ class Backend::Videos::ArticlesController < BackendController
       else
         redirect_to edit_backend_videos_article_url(@article)
       end
+      expire_cache(@article)
     else
       @errors = @article.errors.full_messages
       prepare_post
@@ -53,6 +55,7 @@ class Backend::Videos::ArticlesController < BackendController
     @article = Article.video.find(params[:id])
     @article.destroy
     redirect_to backend_videos_articles_url
+    expire_cache(@article)
   end
 
   private
@@ -81,4 +84,31 @@ class Backend::Videos::ArticlesController < BackendController
                                     category_ids: [],
                                     main_image_attributes: [:id, :file, :_destroy])
   end
+
+  def expire_cache(article)
+    key = fragment_cache_key("#{article.id}")
+    cache_store.delete_matched("#{key}*")
+
+    key = fragment_cache_key('aside_video_block')
+    cache_store.delete_matched("#{key}*")
+
+    key = fragment_cache_key(controller: '/home', action: 'index', action_suffix: 'article_feed')
+    cache_store.delete_matched("#{key}*")
+
+    key = fragment_cache_key(controller: '/home', action: 'index', action_suffix: 'all')
+    cache_store.delete_matched("#{key}*")
+
+    key = fragment_cache_key(controller: '/videos', action: 'index', action_suffix: 'all')
+    cache_store.delete_matched("#{key}*")
+
+    key = fragment_cache_key(controller: '/videos', action: 'index', action_suffix: 'article_feed')
+    cache_store.delete_matched("#{key}*")
+
+    key = fragment_cache_key(controller: '/articles', action: 'index')
+    cache_store.delete_matched("#{key}*")
+
+    key = fragment_cache_key(controller: '/videos', action: 'index_page', page: '')
+    cache_store.delete_matched("#{key}*")
+  end
 end
+

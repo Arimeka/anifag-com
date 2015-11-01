@@ -17,6 +17,7 @@ class Backend::ArticlesController < BackendController
       else
         redirect_to edit_backend_article_url(@article)
       end
+      expire_cache(@article)
     else
       @errors = @article.errors.full_messages
       prepare_post
@@ -39,6 +40,7 @@ class Backend::ArticlesController < BackendController
       else
         redirect_to edit_backend_article_url(@article)
       end
+      expire_cache(@article)
     else
       @errors = @article.errors.full_messages
       prepare_post
@@ -51,6 +53,7 @@ class Backend::ArticlesController < BackendController
     @article = Article.post.find(params[:id])
     @article.destroy
     redirect_to backend_articles_url
+    expire_cache(@article)
   end
 
   private
@@ -76,5 +79,31 @@ class Backend::ArticlesController < BackendController
                                     :category_id,
                                     category_ids: [],
                                     main_image_attributes: [:id, :file, :_destroy])
+  end
+
+  def expire_cache(article)
+    key = fragment_cache_key("#{article.id}")
+    cache_store.delete_matched("#{key}*")
+
+    key = fragment_cache_key('aside_post_block')
+    cache_store.delete_matched("#{key}*")
+
+    key = fragment_cache_key(controller: '/home', action: 'index', action_suffix: 'article_feed')
+    cache_store.delete_matched("#{key}*")
+
+    key = fragment_cache_key(controller: '/home', action: 'index', action_suffix: 'all')
+    cache_store.delete_matched("#{key}*")
+
+    key = fragment_cache_key(controller: '/articles', action: 'index')
+    cache_store.delete_matched("#{key}*")
+
+     key = fragment_cache_key(controller: '/galleries', action: 'index')
+    cache_store.delete_matched("#{key}*")
+
+     key = fragment_cache_key(controller: '/videos', action: 'index')
+    cache_store.delete_matched("#{key}*")
+
+    key = fragment_cache_key(controller: '/articles', action: 'index_page', page: '')
+    cache_store.delete_matched("#{key}*")
   end
 end
