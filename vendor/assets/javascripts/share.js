@@ -57,7 +57,7 @@ Share = {
                 text:   '',
             }, _options);
 
-        return 'http://vkontakte.ru/share.php?'
+        return 'https://vk.com/share.php?'
             + 'url='          + encodeURIComponent(options.url)
             + '&title='       + encodeURIComponent(options.title)
             + '&description=' + encodeURIComponent(options.text)
