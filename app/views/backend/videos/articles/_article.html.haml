@@ -1,9 +1,0 @@
-%tr
-  %td= article.id
-  %td= article.title
-  %td= article.published_at
-  %td
-    = link_to edit_backend_videos_article_path(article), class: 'btn btn-primary' do
-      %i.fa.fa-pencil
-    = link_to backend_videos_article_path(article), method: :delete, data: { confirm: t('form.sure?') }, class: 'btn btn-danger' do
-      %i.fa.fa-trash-o

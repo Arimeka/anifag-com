@@ -22,3 +22,9 @@
 .DS_Store
 *.sublime-project
 *.sublime-workspace
+.idea
+
+cmd/server/server
+/server
+deployments/**/tmp
+web/static
