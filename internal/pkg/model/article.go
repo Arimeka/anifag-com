@@ -13,13 +13,15 @@ type Article struct {
 	ID              int
 	Title           string
 	MetaDescription string
+	Content         string
 	Permalink       string
+	Source          string
 	CreatedAt       time.Time
 }
 
 // Link return link to article page
 func (article *Article) Link() string {
-	return strings.Join([]string{strconv.Itoa(article.ID), article.Permalink}, "-")
+	return "/articles/" + strings.Join([]string{strconv.Itoa(article.ID), article.Permalink}, "-")
 }
 
 // Description return article description

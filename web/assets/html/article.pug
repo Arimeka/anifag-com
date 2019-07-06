@@ -1,0 +1,18 @@
+extends ./layouts/application
+
+block content
+  article
+    .container
+      .row
+        .col-lg-8.col-md-10.mx-auto
+          .post-heading
+            h1 {{ .Article.Title }}
+            span.meta {{ .Article.FormattedDate }}
+      .row
+        .col-lg-8.col-md-10.mx-auto {{ .Article.Content }}
+      | {{ if ne .Article.Source "" }}
+      .row
+        .col-lg-8.col-md-10.mx-auto
+          small.source
+            a(href='{{ .Article.Source }}', target='_blank') Источник
+      | {{ end }}

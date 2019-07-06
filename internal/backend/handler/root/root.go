@@ -26,7 +26,7 @@ func (h *Root) Process(rw http.ResponseWriter, req *http.Request) (data []byte, 
 	if err != nil {
 		appErr := apperror.New(err)
 		appErr.ChangeCode(apperror.DBFailed)
-		return data, http.StatusInternalServerError, appErr
+		return data, appErr.HTTPCode(), appErr
 	}
 
 	viewData := &view.RootPage{
@@ -53,7 +53,7 @@ func (h *Root) Process(rw http.ResponseWriter, req *http.Request) (data []byte, 
 	if err != nil {
 		appErr := apperror.New(err)
 		appErr.ChangeCode(apperror.RenderFailed)
-		return data, http.StatusInternalServerError, apperror.New(err)
+		return data, appErr.HTTPCode(), apperror.New(err)
 	}
 
 	return data, h.DefaultCode, nil

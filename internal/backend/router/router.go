@@ -49,10 +49,20 @@ func addRoutes(router *mux.Router, logger *zap.Logger) {
 		),
 	).Methods(http.MethodGet, http.MethodHead).Name("css")
 
+	router.PathPrefix("/system/").Handler(
+		http.StripPrefix(
+			"/system/",
+			&staticHandler.Handler{
+				Dir: "./web/static/images/system",
+			},
+		),
+	).Methods(http.MethodGet, http.MethodHead).Name("images")
+
 	Root(router, logger)
 
 	root.Prometheus(router, logger)
 	root.Debug(router, logger)
+	root.Articles(router, logger)
 
 	if configuration.IsDevelopment() {
 		var arr []interface{}
