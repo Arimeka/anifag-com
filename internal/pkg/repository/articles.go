@@ -27,6 +27,21 @@ func (repo *ArticlesRepository) Feed(page int, includes string) ([]*model.Articl
 	return command.Result, err
 }
 
+// ListByTag get list of articles by tag ID
+func (repo *ArticlesRepository) ListByTag(tagID, page int, includes string) ([]*model.Article, error) {
+	command := articles.ListByTag{
+		Base:     articles.NewBase(),
+		TagID:    tagID,
+		Page:     page,
+		Includes: includes,
+	}
+	command.Scopes = append(command.Scopes, scopes.ArticleScopes.Ordered())
+
+	err := command.Process(repo.Client)
+
+	return command.Result, err
+}
+
 // Get article by ID
 func (repo *ArticlesRepository) Get(id int, includes string) (*model.Article, error) {
 	command := articles.Get{

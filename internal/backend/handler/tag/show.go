@@ -1,4 +1,4 @@
-package article
+package tag
 
 import (
 	"fmt"
@@ -13,7 +13,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// Root return data for article show page
+// Root return data for tag show page
 type Show struct {
 	*handler.Base
 
@@ -24,6 +24,7 @@ type Show struct {
 // Process request processing
 func (h *Show) Process(rw http.ResponseWriter, req *http.Request) (data []byte, code int, appErr *apperror.Error) {
 	params := mux.Vars(req)
+	page, _ := strconv.Atoi(req.FormValue("page"))
 
 	id, err := strconv.Atoi(params["id"])
 	if err != nil {
@@ -32,7 +33,7 @@ func (h *Show) Process(rw http.ResponseWriter, req *http.Request) (data []byte, 
 		return data, appErr.HTTPCode(), appErr
 	}
 
-	article, err := h.Controller.Article(id)
+	tag, err := h.Controller.Tag(id)
 	if err != nil {
 		appErr := apperror.New(err)
 		if err == errors.ErrNotFound {
@@ -44,10 +45,32 @@ func (h *Show) Process(rw http.ResponseWriter, req *http.Request) (data []byte, 
 		return data, appErr.HTTPCode(), appErr
 	}
 
-	viewData := &view.ArticleShowPage{
-		Title:       fmt.Sprintf("%s - Anime Fag", article.Title),
-		Description: article.MetaDescription,
-		Article:     article,
+	articles, err := h.Controller.Articles(tag.ID, page)
+	if err != nil {
+		appErr := apperror.New(err)
+		appErr.ChangeCode(apperror.DBFailed)
+
+		return data, appErr.HTTPCode(), appErr
+	}
+
+	viewData := &view.RootPage{
+		Title:       fmt.Sprintf("%s - Anime Fag", tag.Name),
+		Description: "Новости аниме и манги.",
+		Articles:    articles,
+	}
+
+	if len(articles) == 5 {
+		if page == 0 {
+			page += 1
+		}
+		viewData.NextPage = fmt.Sprintf("/tags/%d?page=%d", tag.ID, page+1)
+	}
+	if page > 1 {
+		if page == 2 {
+			viewData.PrevPage = fmt.Sprintf("/tags/%d", tag.ID)
+		} else {
+			viewData.PrevPage = fmt.Sprintf("/tags/%d?page=%d", tag.ID, page-1)
+		}
 	}
 
 	data, err = h.Renderer.Render(viewData)

@@ -63,6 +63,7 @@ func addRoutes(router *mux.Router, logger *zap.Logger) {
 	root.Prometheus(router, logger)
 	root.Debug(router, logger)
 	root.Articles(router, logger)
+	root.Tags(router, logger)
 
 	if configuration.IsDevelopment() {
 		var arr []interface{}
