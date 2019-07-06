@@ -64,6 +64,7 @@ func addRoutes(router *mux.Router, logger *zap.Logger) {
 	root.Debug(router, logger)
 	root.Articles(router, logger)
 	root.Tags(router, logger)
+	root.Categories(router, logger)
 
 	if configuration.IsDevelopment() {
 		var arr []interface{}

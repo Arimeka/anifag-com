@@ -1,4 +1,4 @@
-package root
+package tag
 
 import "github.com/Arimeka/anifag-com/internal/pkg/model"
 

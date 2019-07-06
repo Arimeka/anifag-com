@@ -1,4 +1,4 @@
-package tag
+package category
 
 import (
 	"fmt"
@@ -13,7 +13,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// Root return data for tag show page
+// Root return data for category show page
 type Show struct {
 	*handler.Base
 
@@ -33,7 +33,7 @@ func (h *Show) Process(rw http.ResponseWriter, req *http.Request) (data []byte, 
 		return data, appErr.HTTPCode(), appErr
 	}
 
-	tag, err := h.Controller.Tag(id)
+	category, err := h.Controller.Category(id)
 	if err != nil {
 		appErr := apperror.New(err)
 		if err == errors.ErrNotFound {
@@ -45,7 +45,7 @@ func (h *Show) Process(rw http.ResponseWriter, req *http.Request) (data []byte, 
 		return data, appErr.HTTPCode(), appErr
 	}
 
-	articles, err := h.Controller.Articles(tag.ID, page)
+	articles, err := h.Controller.Articles(category.ID, page)
 	if err != nil {
 		appErr := apperror.New(err)
 		appErr.ChangeCode(apperror.DBFailed)
@@ -54,7 +54,7 @@ func (h *Show) Process(rw http.ResponseWriter, req *http.Request) (data []byte, 
 	}
 
 	viewData := &view.RootPage{
-		Title:       fmt.Sprintf("%s - Anime Fag", tag.Name),
+		Title:       fmt.Sprintf("%s - Anime Fag", category.Title),
 		Description: "Новости аниме и манги.",
 		Articles:    articles,
 	}
@@ -63,13 +63,13 @@ func (h *Show) Process(rw http.ResponseWriter, req *http.Request) (data []byte, 
 		if page == 0 {
 			page += 1
 		}
-		viewData.NextPage = fmt.Sprintf("%s?page=%d", tag.Link(), page+1)
+		viewData.NextPage = fmt.Sprintf("%s?page=%d", category.Link(), page+1)
 	}
 	if page > 1 {
 		if page == 2 {
-			viewData.PrevPage = tag.Link()
+			viewData.PrevPage = category.Link()
 		} else {
-			viewData.PrevPage = fmt.Sprintf("%s?page=%d", tag.Link(), page-1)
+			viewData.PrevPage = fmt.Sprintf("%s?page=%d", category.Link(), page-1)
 		}
 	}
 
