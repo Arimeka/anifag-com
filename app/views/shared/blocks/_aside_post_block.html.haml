@@ -1,5 +1,0 @@
-- if @aside_posts.present?
-  .row.post-block
-    %h2.block-title= t('activerecord.models.article.title')
-    .row.posts
-      = render partial: 'articles/article_aside', collection: @aside_posts, as: :article

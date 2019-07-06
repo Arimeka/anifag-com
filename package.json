@@ -1,0 +1,21 @@
+{
+  "name": "anifag-com",
+  "version": "1.0.0",
+  "author": "Navi Arimeka",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --fix --ext .js --ignore-path .gitignore .",
+    "precommit": "npm run lint",
+    "build-html": "pug ./web/assets/html -o ./web/static/html",
+    "build-css": "node-sass ./web/assets/scss/application.scss ./web/static/css/application.css",
+    "build-prod-css": "node-sass --output-style compressed ./web/assets/scss/application.scss ./web/static/css/application.css",
+    "build-prod": "npm run build-html & npm run build-prod-css"
+  },
+  "dependencies": {
+    "pug": "^2.0.4",
+    "pug-cli": "^1.0.0-alpha6",
+    "bootstrap": "^4.1.3",
+    "node-sass": "^4.12.0",
+    "@fortawesome/fontawesome-free": "^5.9.0"
+  }
+}

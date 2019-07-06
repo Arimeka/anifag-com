@@ -1,0 +1,27 @@
+extends ./layouts/application
+
+block content
+  article
+    .container
+      .row
+        .col-lg-8.col-md-10.mx-auto
+          .post-heading
+            h1 {{ .Article.Title }}
+            span.meta {{ .Article.FormattedDate }}
+            ul.list-inline
+              | {{ range .Article.Categories }}
+              li.list-inline-item
+                a.category.badge.badge-info(href='{{ .Link }}') {{ .Title }}
+              | {{ end }}
+              | {{ range .Article.Tags }}
+              li.list-inline-item
+                a.tag.badge.badge-light(href='{{ .Link }}') {{ .Name }}
+              | {{ end }}
+      .row
+        .col-lg-8.col-md-10.mx-auto {{ .Article.Content }}
+      | {{ if ne .Article.Source "" }}
+      .row
+        .col-lg-8.col-md-10.mx-auto
+          small.source
+            a(href='{{ .Article.Source }}', target='_blank') Источник
+      | {{ end }}

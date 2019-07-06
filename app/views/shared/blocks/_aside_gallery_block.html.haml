@@ -1,5 +1,0 @@
-- if @aside_galleries.present?
-  .row.gallery-block
-    %h2.block-title= t('activerecord.models.gallery.title')
-    .row.videos
-      = render partial: 'articles/article_aside', collection: @aside_galleries, as: :article
