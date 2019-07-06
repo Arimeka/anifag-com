@@ -37,7 +37,7 @@ func (h *Root) Process(rw http.ResponseWriter, req *http.Request) (data []byte, 
 
 	if len(articles) == 5 {
 		if page == 0 {
-			page += 1
+			page++
 		}
 		viewData.NextPage = fmt.Sprintf("/?page=%d", page+1)
 	}

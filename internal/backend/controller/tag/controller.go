@@ -10,7 +10,7 @@ type Controller struct {
 }
 
 // Articles gets list of articles
-func (c Controller) Articles(tagID int, page int) ([]*model.Article, error) {
+func (c Controller) Articles(tagID, page int) ([]*model.Article, error) {
 	return c.ArticlesRepository.ListByTag(tagID, page, "tags,categories")
 }
 

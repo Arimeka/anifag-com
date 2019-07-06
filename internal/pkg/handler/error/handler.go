@@ -6,6 +6,7 @@ import (
 	"path/filepath"
 )
 
+// Error rendering error page
 type Error struct {
 	Code int
 }

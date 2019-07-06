@@ -7,6 +7,7 @@ import (
 	errorHandler "github.com/Arimeka/anifag-com/internal/pkg/handler/error"
 )
 
+// Handler send static files
 type Handler struct {
 	Dir        string
 	SingleFile string

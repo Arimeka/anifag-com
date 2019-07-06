@@ -10,11 +10,11 @@ type Controller struct {
 }
 
 // Articles gets list of articles
-func (c Controller) Articles(categoryID int, page int) ([]*model.Article, error) {
+func (c Controller) Articles(categoryID, page int) ([]*model.Article, error) {
 	return c.ArticlesRepository.ListByCategory(categoryID, page, "tags,categories")
 }
 
-// Tag gets tag by ID
+// Category gets category by ID
 func (c Controller) Category(id int) (*model.Category, error) {
 	return c.CategoriesRepository.Get(id, "")
 }

@@ -13,7 +13,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// Root return data for tag show page
+// Show return data for tag show page
 type Show struct {
 	*handler.Base
 
@@ -61,7 +61,7 @@ func (h *Show) Process(rw http.ResponseWriter, req *http.Request) (data []byte, 
 
 	if len(articles) == 5 {
 		if page == 0 {
-			page += 1
+			page++
 		}
 		viewData.NextPage = fmt.Sprintf("%s?page=%d", tag.Link(), page+1)
 	}

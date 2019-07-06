@@ -13,7 +13,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// Root return data for article show page
+// Show return data for article show page
 type Show struct {
 	*handler.Base
 

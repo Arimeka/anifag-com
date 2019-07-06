@@ -7,7 +7,7 @@ type Controller struct {
 	Repository repo
 }
 
-// Articles gets list of articles
+// Article gets article by ID
 func (c Controller) Article(id int) (*model.Article, error) {
 	return c.Repository.Get(id, "tags,categories")
 }
