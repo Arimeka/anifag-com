@@ -7,6 +7,7 @@ import (
 	"github.com/Arimeka/anifag-com/internal/backend/router/root"
 	"github.com/Arimeka/anifag-com/internal/pkg/configuration"
 	errorHandler "github.com/Arimeka/anifag-com/internal/pkg/handler/error"
+	staticHandler "github.com/Arimeka/anifag-com/internal/pkg/handler/static"
 
 	"github.com/gorilla/mux"
 	"go.uber.org/zap"
@@ -24,6 +25,29 @@ func New(logger *zap.Logger) *mux.Router {
 func addRoutes(router *mux.Router, logger *zap.Logger) {
 	router.NotFoundHandler = &errorHandler.Error{Code: http.StatusNotFound}
 	router.MethodNotAllowedHandler = &errorHandler.Error{Code: http.StatusMethodNotAllowed}
+
+	router.Handle(
+		"/favicon.ico",
+		&staticHandler.Handler{
+			SingleFile: "./web/public/favicon.ico",
+		},
+	).Methods(http.MethodGet, http.MethodHead).Name("favicon.ico")
+
+	router.Handle(
+		"/robots.txt",
+		&staticHandler.Handler{
+			SingleFile: "./web/public/robots.txt",
+		},
+	).Methods(http.MethodGet, http.MethodHead).Name("robots.txt")
+
+	router.PathPrefix("/css/").Handler(
+		http.StripPrefix(
+			"/css/",
+			&staticHandler.Handler{
+				Dir: "./web/static/css",
+			},
+		),
+	).Methods(http.MethodGet, http.MethodHead).Name("css")
 
 	Root(router, logger)
 

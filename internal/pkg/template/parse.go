@@ -2,8 +2,8 @@ package template
 
 import (
 	"fmt"
-	"html/template"
 	"path/filepath"
+	"text/template"
 )
 
 // Parse parsing template by name
@@ -12,5 +12,12 @@ func Parse(name string) (*template.Template, error) {
 	if err != nil {
 		return nil, err
 	}
-	return template.New(filepath.Base(path)).ParseFiles(path)
+
+	funcMap := template.FuncMap{
+		"seoDescription": seoDescription,
+		"seoTitle":       seoTitle,
+		"currentYear":    currentYear,
+	}
+
+	return template.New(filepath.Base(path)).Funcs(funcMap).ParseFiles(path)
 }

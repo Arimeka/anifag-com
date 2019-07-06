@@ -22,15 +22,20 @@ func Init() error {
 
 	err := v.Unmarshal(config)
 
+	if config.TimeZone, err = time.LoadLocation("Europe/Moscow"); err != nil {
+		config.TimeZone = time.Local
+	}
+
 	return err
 }
 
 type configuration struct {
-	Environment     string        `mapstructure:"env"`
-	Bind            string        `mapstructure:"bind"`
-	DebugBind       string        `mapstructure:"debug_bind"`
-	MetricsBind     string        `mapstructure:"metrics_bind"`
-	GracefulTimeout time.Duration `mapstructure:"graceful_timeout"`
+	Environment     string         `mapstructure:"env"`
+	Bind            string         `mapstructure:"bind"`
+	DebugBind       string         `mapstructure:"debug_bind"`
+	MetricsBind     string         `mapstructure:"metrics_bind"`
+	GracefulTimeout time.Duration  `mapstructure:"graceful_timeout"`
+	TimeZone        *time.Location `mapstructure:"-"`
 }
 
 func setEnvsBindings(v *viper.Viper) error {
@@ -79,4 +84,9 @@ func IsDevelopment() bool {
 // GracefulTimeout for shutdown
 func GracefulTimeout() time.Duration {
 	return config.GracefulTimeout
+}
+
+// TimeZone current timezone
+func TimeZone() *time.Location {
+	return config.TimeZone
 }

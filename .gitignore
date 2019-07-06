@@ -28,3 +28,5 @@ cmd/server/server
 /server
 deployments/**/tmp
 web/static
+node_modules
+.yarn

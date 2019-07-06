@@ -1,6 +1,7 @@
 package root
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 
@@ -29,7 +30,23 @@ func (h *Root) Process(rw http.ResponseWriter, req *http.Request) (data []byte, 
 	}
 
 	viewData := &view.RootPage{
-		Articles: articles,
+		Title:       "Anime Fag",
+		Description: "Новости аниме и манги.",
+		Articles:    articles,
+	}
+
+	if len(articles) == 5 {
+		if page == 0 {
+			page += 1
+		}
+		viewData.NextPage = fmt.Sprintf("/?page=%d", page+1)
+	}
+	if page > 1 {
+		if page == 2 {
+			viewData.PrevPage = "/"
+		} else {
+			viewData.PrevPage = fmt.Sprintf("/?page=%d", page-1)
+		}
 	}
 
 	data, err = h.Renderer.Render(viewData)

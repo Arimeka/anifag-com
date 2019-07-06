@@ -4,5 +4,9 @@ import "github.com/Arimeka/anifag-com/internal/pkg/model"
 
 // RootPage data for template root page
 type RootPage struct {
-	Articles []*model.Article
+	Title       string
+	Description string
+	Articles    []*model.Article
+	NextPage    string
+	PrevPage    string
 }

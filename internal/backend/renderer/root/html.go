@@ -2,7 +2,7 @@ package root
 
 import (
 	"bytes"
-	"html/template"
+	"text/template"
 
 	"github.com/Arimeka/anifag-com/internal/backend/view"
 )
