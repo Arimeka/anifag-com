@@ -1,0 +1,16 @@
+[Unit]
+Description=anifag.com web server
+After=postgresql.service
+StartLimitIntervalSec=0
+
+[Service]
+EnvironmentFile=/home/anifag/anifag-com/env
+WorkingDirectory=/home/anifag/anifag-com/app
+Type=simple
+Restart=always
+RestartSec=1
+User=anifag
+ExecStart=/usr/bin/env /home/anifag/anifag-com/app/server
+
+[Install]
+WantedBy=nginx.service

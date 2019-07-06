@@ -9,3 +9,11 @@ lint:
 .PHONY: build-go
 build-go: check-go
 	@scripts/build-go.sh
+
+.PHONY: build-assets
+build-assets:
+	@scripts/build-assets.sh
+
+.PHONY: build
+build: build-assets
+	@scripts/build-go-production.sh

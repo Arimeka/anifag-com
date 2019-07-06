@@ -25,9 +25,11 @@ func main() {
 		logger.Fatal("Configuration", zap.Error(err))
 	}
 
-	logger, err = zap.NewDevelopment()
-	if err != nil {
-		log.Fatal(err)
+	if configuration.IsDevelopment() {
+		logger, err = zap.NewDevelopment()
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
 
 	start(logger)
