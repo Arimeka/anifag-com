@@ -17,6 +17,10 @@ type Article struct {
 	Permalink       string
 	Source          string
 	CreatedAt       time.Time
+
+	// Relations
+	Tags       []*Tag      `gorm:"many2many:taggings;jointable_foreignkey:taggable_id;"`
+	Categories []*Category `gorm:"many2many:cat_associations;"`
 }
 
 // Link return link to article page

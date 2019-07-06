@@ -6,3 +6,12 @@
       | {{ .Description }}
   p.post-meta
     | {{ .FormattedDate }}
+    ul.list-inline
+      | {{ range .Categories }}
+      li.list-inline-item
+        a.category.badge.badge-info(href='{{ .Link }}') {{ .Title }}
+      | {{ end }}
+      | {{ range .Tags }}
+      li.list-inline-item
+        a.tag.badge.badge-light(href='{{ .Link }}') {{ .Name }}
+      | {{ end }}

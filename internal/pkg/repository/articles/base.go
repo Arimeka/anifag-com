@@ -11,6 +11,8 @@ func NewBase() Base {
 	return Base{
 		Scopes: []func(db *gorm.DB) *gorm.DB{
 			scopes.ArticleScopes.Published(),
+			scopes.ArticlePreloads.Tags(),
+			scopes.ArticlePreloads.Categories(),
 		},
 	}
 }
