@@ -12,10 +12,10 @@
     "build-prod": "npm run build-html & npm run build-prod-css"
   },
   "dependencies": {
-    "pug": "^2.0.4",
-    "pug-cli": "^1.0.0-alpha6",
+    "@fortawesome/fontawesome-free": "^5.9.0",
     "bootstrap": "^4.1.3",
     "node-sass": "^4.12.0",
-    "@fortawesome/fontawesome-free": "^5.9.0"
+    "pug": "^2.0.4",
+    "pug-cli": "^1.0.0-alpha6"
   }
 }
